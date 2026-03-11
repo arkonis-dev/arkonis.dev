@@ -1,5 +1,6 @@
 ---
 title: Overview
+description: agentops-operator is a Kubernetes operator that manages AI agents as first-class cluster resources — scaling, health checks, and lifecycle management for LLM-based agents.
 nav_order: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Getting Started
+description: Install agentops-operator on Kubernetes in minutes. Deploy AI agents with a single kubectl apply command.
 nav_order: 2
 ---
 

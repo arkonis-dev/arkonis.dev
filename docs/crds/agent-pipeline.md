@@ -1,5 +1,6 @@
 ---
 title: AgentPipeline
+description: AgentPipeline API reference — define DAG workflows where AI agent outputs feed into subsequent agent inputs in agentops-operator.
 parent: CRD Reference
 nav_order: 4
 ---

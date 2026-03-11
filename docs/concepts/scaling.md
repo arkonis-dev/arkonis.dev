@@ -1,5 +1,6 @@
 ---
 title: Scaling
+description: Scale AI agent deployments on Kubernetes manually or automatically based on task queue depth with agentops-operator.
 parent: Concepts
 nav_order: 3
 ---

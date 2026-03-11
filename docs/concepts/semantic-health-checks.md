@@ -1,5 +1,6 @@
 ---
 title: Semantic Health Checks
+description: How agentops-operator validates AI agent health using LLM-based readiness probes that check output quality, not just liveness.
 parent: Concepts
 nav_order: 1
 ---

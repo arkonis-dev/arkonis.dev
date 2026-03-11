@@ -1,5 +1,6 @@
 ---
 title: AgentService
+description: AgentService API reference — route tasks to AI agents using round-robin, least-busy, or random load balancing strategies in agentops-operator.
 parent: CRD Reference
 nav_order: 2
 ---

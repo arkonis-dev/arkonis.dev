@@ -1,5 +1,6 @@
 ---
 title: AgentConfig
+description: AgentConfig API reference — reusable prompt fragments and model settings shared across multiple AgentDeployments in agentops-operator.
 parent: CRD Reference
 nav_order: 3
 ---

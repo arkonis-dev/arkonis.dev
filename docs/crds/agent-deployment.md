@@ -1,5 +1,6 @@
 ---
 title: AgentDeployment
+description: AgentDeployment API reference — manage pools of AI agent instances with configurable models, system prompts, and MCP tool servers on Kubernetes.
 parent: CRD Reference
 nav_order: 1
 ---

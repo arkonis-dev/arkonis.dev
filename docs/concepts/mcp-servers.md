@@ -1,5 +1,6 @@
 ---
 title: MCP Servers
+description: Connect MCP (Model Context Protocol) tool servers to your AI agents running on Kubernetes with agentops-operator.
 parent: Concepts
 nav_order: 2
 ---

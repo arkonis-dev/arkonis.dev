@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agent-operator — Kubernetes-native AI agent infrastructure</title>
+  <meta name="description" content="Deploy, scale, and manage LLM agents the same way you manage any other Kubernetes workload." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <span class="logo">agent-operator</span>
+      <nav>
+        <a href="#concepts">Concepts</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="https://github.com/agentops-io/agent-operator" class="btn-outline" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="badge">v1alpha1 · Apache 2.0</div>
+        <h1>Kubernetes-native<br />AI agent infrastructure</h1>
+        <p class="hero-sub">Deploy, scale, and manage LLM agents the same way you manage any other workload. <code>kubectl apply</code> and you're done.</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="code-title">terminal</span>
+          </div>
+          <pre><code><span class="cmd">$</span> kubectl apply -f research-agent.yaml
+<span class="out">agentdeployment.agentops.agentops.io/research-agent created</span>
+
+<span class="cmd">$</span> kubectl get agdep
+<span class="out">NAME              MODEL                      REPLICAS   READY   AGE
+research-agent    claude-sonnet-4-20250514   5          5       2m</span></code></pre>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://github.com/agentops-io/agent-operator#installation" class="btn-primary" target="_blank" rel="noopener">Get started</a>
+          <a href="https://github.com/agentops-io/agent-operator" class="btn-ghost" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+      <div class="container">
+        <h2>Agents are going to production.<br />The tooling hasn't caught up.</h2>
+        <div class="problem-grid">
+          <div class="problem-item">
+            <span class="icon">⚠</span>
+            <p>Running agents as one-off scripts with no lifecycle management</p>
+          </div>
+          <div class="problem-item">
+            <span class="icon">⚠</span>
+            <p>Manually scaling agent processes when load increases</p>
+          </div>
+          <div class="problem-item">
+            <span class="icon">⚠</span>
+            <p>Hardcoding prompts and tool configs inside application code</p>
+          </div>
+          <div class="problem-item">
+            <span class="icon">⚠</span>
+            <p>Restarting stuck agents by hand when they silently produce bad output</p>
+          </div>
+        </div>
+        <p class="problem-conclusion">Containers had the same problem before Kubernetes. The answer wasn't a better script — it was a new abstraction layer.</p>
+      </div>
+    </section>
+
+    <!-- Concepts -->
+    <section class="concepts" id="concepts">
+      <div class="container">
+        <h2>First-class primitives for agents</h2>
+        <p class="section-sub">agent-operator extends the Kubernetes API with four new resource types.</p>
+
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <div class="concept-kind">AgentDeployment</div>
+            <div class="concept-analog">like <code>Deployment</code></div>
+            <p>Manages a pool of agent instances running the same model, prompt, and tool configuration. Handles scheduling, scaling, and health checking.</p>
+            <pre class="concept-yaml"><code>spec:
+  replicas: 5
+  model: claude-sonnet-4-20250514
+  systemPrompt: |
+    You are a research analyst...
+  mcpServers:
+    - name: web-search
+      url: https://search.mcp.internal/sse</code></pre>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-kind">AgentService</div>
+            <div class="concept-analog">like <code>Service</code></div>
+            <p>Routes incoming tasks to available agent instances. Decouples task producers from the agent pool with configurable load balancing strategies.</p>
+            <pre class="concept-yaml"><code>spec:
+  selector:
+    agentDeployment: research-agent
+  routing:
+    strategy: least-busy
+  ports:
+    - protocol: A2A
+      port: 8080</code></pre>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-kind">AgentConfig</div>
+            <div class="concept-analog">like <code>ConfigMap</code></div>
+            <p>Reusable configuration fragments — prompt snippets, model settings, output schemas. Reference from multiple AgentDeployments to keep config DRY.</p>
+            <pre class="concept-yaml"><code>spec:
+  temperature: "0.3"
+  outputFormat: structured-json
+  promptFragments:
+    persona: "Expert analyst..."
+    outputRules: "Always cite sources."</code></pre>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-kind">AgentPipeline</div>
+            <div class="concept-analog">novel primitive</div>
+            <p>Chains agents into directed acyclic graphs where outputs feed into inputs. The primitive for orchestrating multi-agent workflows declaratively.</p>
+            <pre class="concept-yaml"><code>spec:
+  steps:
+    - name: research
+      agentDeployment: research-agent
+    - name: writer
+      dependsOn: [research]
+      agentDeployment: writer-agent</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <h2>How it works</h2>
+        <p class="section-sub">Everything fits into the Kubernetes model you already know.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Declare your agent in YAML</h3>
+              <p>Describe the model, system prompt, MCP tool servers, and replica count. Same format as any other Kubernetes resource.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>The operator reconciles</h3>
+              <p>agent-operator watches for changes and ensures the actual state matches your desired state — creating pods, injecting config, and wiring the task queue.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>Agents poll and process</h3>
+              <p>Each agent pod reads tasks from a Redis Streams queue, calls the Anthropic API in a tool-use loop, and writes results back. The operator handles health checks and restarts.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>GitOps and rollback just work</h3>
+              <p>Promoting a new system prompt is a pull request. Rolling back a bad prompt change is <code>git revert</code>. Audit history is your git log.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Semantic health -->
+    <section class="feature-highlight">
+      <div class="container">
+        <div class="feature-highlight-inner">
+          <div class="feature-text">
+            <h2>Semantic health checks</h2>
+            <p>Standard liveness probes check whether a process is running. That's not enough for agents — an agent can be running fine while consistently producing wrong output.</p>
+            <p>agent-operator introduces semantic readiness probes that periodically send a validation prompt to the agent and verify the response. Kubernetes stops routing tasks to agents that fail the check.</p>
+          </div>
+          <div class="feature-code">
+            <pre><code><span class="yaml-key">livenessProbe:</span>
+  <span class="yaml-key">type:</span> <span class="yaml-val">semantic</span>
+  <span class="yaml-key">intervalSeconds:</span> <span class="yaml-val">30</span></code></pre>
+            <div class="feature-endpoints">
+              <div class="endpoint">
+                <code class="ep-path">GET /healthz</code>
+                <span class="ep-desc">Process is up</span>
+              </div>
+              <div class="endpoint">
+                <code class="ep-path">GET /readyz</code>
+                <span class="ep-desc">Agent produces correct output</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to deploy your first agent?</h2>
+        <p>Install the CRDs, deploy Redis, create your API key secret, and apply your first AgentDeployment — all in under five minutes.</p>
+        <a href="https://github.com/agentops-io/agent-operator#installation" class="btn-primary" target="_blank" rel="noopener">Read the docs →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>agent-operator · Apache 2.0</span>
+      <nav>
+        <a href="https://github.com/agentops-io/agent-operator" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/agentops-io/agent-operator/issues" target="_blank" rel="noopener">Issues</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

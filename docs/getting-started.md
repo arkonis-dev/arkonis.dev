@@ -66,10 +66,10 @@ kubectl get pods -l agentops.io/deployment=research-agent
 
 ## Next steps
 
-- [AgentDeployment reference](./crds/agent-deployment) — full spec for the core resource
-- [AgentService reference](./crds/agent-service) — routing tasks to agents
-- [AgentConfig reference](./crds/agent-config) — reusable configuration
-- [AgentPipeline reference](./crds/agent-pipeline) — multi-agent DAGs
-- [Semantic Health Checks](./concepts/semantic-health-checks) — how readiness probes work
-- [MCP Servers](./concepts/mcp-servers) — connecting tools to agents
-- [Scaling](./concepts/scaling) — replicas and limits
+- [AgentDeployment reference](/docs/crds/agent-deployment) — full spec for the core resource
+- [AgentService reference](/docs/crds/agent-service) — routing tasks to agents
+- [AgentConfig reference](/docs/crds/agent-config) — reusable configuration
+- [AgentPipeline reference](/docs/crds/agent-pipeline) — multi-agent DAGs
+- [Semantic Health Checks](/docs/concepts/semantic-health-checks) — how readiness probes work
+- [MCP Servers](/docs/concepts/mcp-servers) — connecting tools to agents
+- [Scaling](/docs/concepts/scaling) — replicas and limits

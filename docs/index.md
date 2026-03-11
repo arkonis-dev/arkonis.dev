@@ -22,6 +22,6 @@ Short names: `agdep`, `agsvc`, `agcfg`, `agpipe`
 
 ## Next steps
 
-- [Getting Started](./getting-started) — install and deploy your first agent
-- [CRD Reference](./crds/) — full field reference for all four resource types
-- [Concepts](./concepts/) — semantic health checks, MCP servers, scaling
+- [Getting Started](/docs/getting-started) — install and deploy your first agent
+- [CRD Reference](/docs/crds/) — full field reference for all four resource types
+- [Concepts](/docs/concepts/) — semantic health checks, MCP servers, scaling

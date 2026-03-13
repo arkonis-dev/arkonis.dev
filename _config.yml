@@ -1,7 +1,6 @@
 title: ARKONIS
 description: Kubernetes-native AI agent infrastructure
 url: https://arkonis.dev
-logo: https://arkonis.dev/logo.png
 
 remote_theme: just-the-docs/just-the-docs@v0.10.0
 

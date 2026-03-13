@@ -23,6 +23,7 @@ Short names: `agdep`, `agsvc`, `agcfg`, `agpipe`
 
 ## Next steps
 
+- [Why agentops-operator](/docs/why) — who this is for and what problems it solves
 - [Getting Started](/docs/getting-started) — install and deploy your first agent
 - [CRD Reference](/docs/crds/) — full field reference for all four resource types
 - [Concepts](/docs/concepts/) — semantic health checks, MCP servers, scaling

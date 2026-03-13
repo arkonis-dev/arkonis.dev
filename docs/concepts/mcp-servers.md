@@ -9,7 +9,7 @@ nav_order: 2
 
 ## What is MCP?
 
-[Model Context Protocol](https://modelcontextprotocol.io/) (MCP) is a standard interface for providing tools and context to LLMs. An MCP server exposes a set of callable tools — functions the model can invoke during a conversation. Examples: web search, database queries, file access, API calls.
+[Model Context Protocol](https://modelcontextprotocol.io/) (MCP) is a standard interface for providing tools and context to LLMs. An MCP server exposes a set of callable tools: functions the model can invoke during a conversation, such as web search, database queries, file access, and API calls.
 
 agentops-operator connects agent pods to MCP servers at startup, making those tools available to the configured LLM provider's tool-use loop.
 
@@ -50,6 +50,6 @@ The LLM provider receives the prefixed names; the runtime strips the prefix befo
 
 ## Failure behavior
 
-MCP server connection failures are non-fatal. If a server is unreachable at startup, the agent logs the error and continues with a reduced toolset — only the tools from servers that connected successfully are available. This prevents a single unavailable tool server from taking down the entire agent pool.
+MCP server connection failures are non-fatal. If a server is unreachable at startup, the agent logs the error and continues with a reduced toolset. Only the tools from servers that connected successfully are available. This prevents a single unavailable tool server from taking down the entire agent pool.
 
 If a tool call fails at runtime (e.g., the MCP server becomes unavailable mid-task), the error is returned to the model as a tool result. The model decides how to proceed.

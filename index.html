@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>agentops-operator — Kubernetes-native AI agent infrastructure</title>
+  <title>agentops-operator: Kubernetes-native AI agent infrastructure</title>
   <meta name="description" content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="logo.png" />
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <span class="logo">agentops-operator</span>
+      <span class="logo"><img src="logo.png" alt="agentops-operator" class="logo-img" />agentops-operator</span>
       <nav>
         <a href="https://agentops-io.com/docs/">Docs</a>
         <a href="https://agentops-io.com/docs/roadmap">Roadmap</a>
@@ -75,7 +76,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
             <p>Restarting stuck agents by hand when they silently produce bad output</p>
           </div>
         </div>
-        <p class="problem-conclusion">Containers had the same problem before Kubernetes. The answer wasn't a better script — it was a new abstraction layer.</p>
+        <p class="problem-conclusion">Containers had the same problem before Kubernetes. The answer was a new abstraction layer, not a better script.</p>
       </div>
     </section>
 
@@ -117,7 +118,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
           <div class="concept-card">
             <div class="concept-kind">AgentConfig</div>
             <div class="concept-analog">like <code>ConfigMap</code></div>
-            <p>Reusable configuration fragments — prompt snippets, model settings, output schemas. Reference from multiple AgentDeployments to keep config DRY.</p>
+            <p>Reusable prompt fragments and model settings. Reference from multiple AgentDeployments to keep configuration in one place.</p>
             <pre class="concept-yaml"><code>spec:
   temperature: "0.3"
   outputFormat: structured-json
@@ -142,7 +143,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
           <div class="concept-card">
             <div class="concept-kind">AgentMemory</div>
             <div class="concept-analog">like <code>PersistentVolumeClaim</code></div>
-            <p>Defines the persistent memory backend for agent instances. Agents remember context across tasks — not just within a single conversation. Supports Redis and vector stores.</p>
+            <p>Defines the persistent memory backend for agent instances. Agents remember context across many tasks, not just within a single conversation. Supports Redis and vector stores.</p>
             <pre class="concept-yaml"><code>spec:
   backend: vector-store
   vectorStore:
@@ -171,7 +172,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
             <div class="step-num">2</div>
             <div class="step-body">
               <h3>The operator reconciles</h3>
-              <p>agentops-operator watches for changes and ensures the actual state matches your desired state — creating pods, injecting config, and wiring the task queue.</p>
+              <p>agentops-operator watches for changes and ensures the actual state matches your desired state by creating pods, injecting config, and wiring the task queue.</p>
             </div>
           </div>
           <div class="step">
@@ -185,7 +186,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
             <div class="step-num">4</div>
             <div class="step-body">
               <h3>ArgoCD and Flux work out of the box</h3>
-              <p>Promoting a new system prompt is a pull request. Your existing GitOps tooling — ArgoCD, Flux, or anything that speaks <code>kubectl</code> — syncs it to the cluster exactly like any other resource change.</p>
+              <p>Promoting a new system prompt is a pull request. Your existing GitOps tooling (ArgoCD, Flux, or anything that speaks <code>kubectl</code>) syncs it to the cluster exactly like any other resource change.</p>
             </div>
           </div>
         </div>
@@ -198,7 +199,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
         <div class="feature-highlight-inner">
           <div class="feature-text">
             <h2>Semantic health checks</h2>
-            <p>Standard liveness probes check whether a process is running. That's not enough for agents — an agent can be running fine while consistently producing wrong output.</p>
+            <p>Standard liveness probes check whether a process is running. That's not enough for agents. An agent can be running fine while consistently producing wrong output.</p>
             <p>agentops-operator introduces semantic readiness probes that periodically send a validation prompt to the agent and verify the response. Kubernetes stops routing tasks to agents that fail the check.</p>
           </div>
           <div class="feature-code">
@@ -224,7 +225,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
     <section class="cta-section">
       <div class="container">
         <h2>Ready to deploy your first agent?</h2>
-        <p>Install the operator, apply your first AgentDeployment, and start routing tasks — no custom orchestration code required.</p>
+        <p>Install the operator, apply your first AgentDeployment, and start routing tasks. No custom orchestration code required.</p>
         <a href="https://agentops-io.com/docs/getting-started" class="btn-primary" target="_blank" rel="noopener">Read the docs →</a>
       </div>
     </section>

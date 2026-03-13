@@ -1,6 +1,6 @@
 ---
 title: Why agentops-operator
-description: Why engineering teams running AI agents in production need agentops-operator — cost controls, semantic health checks, GitOps, and Kubernetes-native agent management.
+description: Why engineering teams running AI agents in production need agentops-operator: cost controls, semantic health checks, GitOps, and Kubernetes-native agent management.
 nav_order: 3
 ---
 
@@ -8,7 +8,7 @@ nav_order: 3
 
 If you are a solo developer experimenting with LLMs, you do not need this. Claude Code, the Anthropic API, or a simple Python script will serve you better.
 
-agentops-operator is for **engineering teams running agents in production at scale** — where the problems are operational, not algorithmic.
+agentops-operator is for **engineering teams running agents in production at scale**, where the problems are operational, not algorithmic.
 
 ---
 
@@ -36,7 +36,7 @@ These are applied to every pod the operator creates, regardless of what the agen
 
 Standard Kubernetes liveness probes check whether a process is running. They cannot tell you whether an LLM is producing useful output.
 
-agentops-operator introduces **semantic health checks** — a secondary LLM call that validates the agent's actual output quality. Pods that fail the semantic probe are removed from routing until they recover, exactly like a failing HTTP health check.
+agentops-operator introduces **semantic health checks**: a secondary LLM call that validates the agent's actual output quality. Pods that fail the semantic probe are removed from routing until they recover, exactly like a failing HTTP health check.
 
 ```yaml
 spec:
@@ -48,11 +48,11 @@ spec:
 
 ### "We need to roll back our agent after a bad deploy"
 
-A system prompt change is a pull request. A rollback is a sync revert in ArgoCD or Flux — the same GitOps workflow your team already uses for every other service works identically for agents.
+A system prompt change is a pull request. A rollback is a sync revert in ArgoCD or Flux. The same GitOps workflow your team already uses for every other service works identically for agents.
 
 ### "Compliance requires an audit trail of every agent configuration change"
 
-Every agent definition goes through `kubectl`, RBAC, and git. Kubernetes already provides the audit trail — who changed what, when, and through which approval process.
+Every agent definition goes through `kubectl`, RBAC, and git. Kubernetes already provides the audit trail: who changed what, when, and through which approval process.
 
 ### "We need to chain agents together without writing orchestration code"
 
@@ -80,7 +80,7 @@ No orchestration code. No custom queue logic. Just YAML.
 
 | Role | Why it helps |
 |---|---|
-| Platform engineer | Standard Kubernetes primitives for AI agents — no new management layer to operate |
+| Platform engineer | Standard Kubernetes primitives for AI agents. No new management layer to operate. |
 | Team lead | Cost controls and limits enforced at infrastructure level, not per-developer discipline |
 | SRE / on-call | Semantic health checks and standard alerting work without custom tooling |
 | Security / compliance | RBAC, audit logs, and namespace isolation apply to agents automatically |

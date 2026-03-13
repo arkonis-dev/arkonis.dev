@@ -8,7 +8,7 @@ nav_order: 2
 
 ## Local development
 
-The fastest way to try agentops-operator is with the `make dev` command. It creates a [kind](https://kind.sigs.k8s.io/) cluster and sets everything up in one step — no manual Redis config, no open terminals.
+The fastest way to try agentops-operator is with the `make dev` command. It creates a [kind](https://kind.sigs.k8s.io/) cluster and sets everything up in one step with no manual Redis config required.
 
 **Prerequisites:** Docker, kind, kubectl, Go 1.25+
 
@@ -68,7 +68,7 @@ kubectl apply -f https://raw.githubusercontent.com/agentops-io/agentops-operator
 
 ### 3. Create the API key secret
 
-Create one secret per namespace where agents will run. The operator injects the entire secret as environment variables into every agent pod — add whichever keys your chosen provider requires.
+Create one secret per namespace where agents will run. The operator injects the entire secret as environment variables into every agent pod. Add whichever keys your chosen provider requires.
 
 **Anthropic (default):**
 ```bash

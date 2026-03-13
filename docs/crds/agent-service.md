@@ -23,7 +23,7 @@ metadata:
   namespace: default
 spec:
   selector:
-    agentDeployment: research-agent
+    arkonisDeployment: research-agent
   routing:
     strategy: least-busy
   ports:
@@ -45,7 +45,7 @@ spec:
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `agentDeployment` | string | yes | Name of the `ArkonisDeployment` in the same namespace to route tasks to. |
+| `arkonisDeployment` | string | yes | Name of the `ArkonisDeployment` in the same namespace to route tasks to. |
 
 ### `routing`
 

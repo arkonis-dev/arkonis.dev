@@ -62,11 +62,11 @@ ArkonisPipeline defines multi-agent DAGs declaratively. Outputs from one agent a
 spec:
   steps:
     - name: research
-      agentDeployment: research-agent
+      arkonisDeployment: research-agent
       inputs:
         prompt: "Research this topic: {{ .pipeline.input.topic }}"
     - name: summarize
-      agentDeployment: summarizer-agent
+      arkonisDeployment: summarizer-agent
       dependsOn: [research]
       inputs:
         prompt: "Summarize: {{ .steps.research.output }}"

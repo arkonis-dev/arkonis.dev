@@ -28,7 +28,7 @@ This will:
 When it finishes, deploy your first agent:
 
 ```bash
-kubectl apply -f config/samples/arkonis_v1alpha1_agentdeployment.yaml
+kubectl apply -f config/samples/arkonis_v1alpha1_arkonisdeployment.yaml
 kubectl get aodep -w
 # NAME             MODEL                      REPLICAS   READY   AGE
 # research-agent   claude-sonnet-4-20250514   2          2       30s
@@ -82,7 +82,7 @@ kubectl create secret generic arkonis-operator-api-keys \
 ### 4. Deploy your first agent
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/arkonis-dev/arkonis-operator/main/config/samples/arkonis_v1alpha1_agentdeployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/arkonis-dev/arkonis-operator/main/config/samples/arkonis_v1alpha1_arkonisdeployment.yaml
 ```
 
 ## Verify

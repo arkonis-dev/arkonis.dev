@@ -26,11 +26,11 @@ spec:
     topic: "AI in healthcare"
   steps:
     - name: research
-      agentDeployment: research-agent
+      arkonisDeployment: research-agent
       inputs:
         topic: "{{ .pipeline.input.topic }}"
     - name: writer
-      agentDeployment: writer-agent
+      arkonisDeployment: writer-agent
       dependsOn: [research]
       inputs:
         research: "{{ .steps.research.output }}"
@@ -61,7 +61,7 @@ graph LR
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `name` | string | yes | Unique step name within the pipeline. Referenced in template expressions as `{{ .steps.<name>.output }}`. |
-| `agentDeployment` | string | yes | Name of the `ArkonisDeployment` in the same namespace that will execute this step. |
+| `arkonisDeployment` | string | yes | Name of the `ArkonisDeployment` in the same namespace that will execute this step. |
 | `dependsOn` | []string | no | List of step names that must complete before this step runs. Omit for steps with no dependencies (they run immediately). |
 | `inputs` | map[string]string | no | Key-value inputs passed to the agent for this step. Values are template expressions or literal strings. |
 

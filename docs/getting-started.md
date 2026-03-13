@@ -38,15 +38,16 @@ kubectl apply -f https://raw.githubusercontent.com/agentops-io/agentops-operator
 
 ### 3. Create the API key secret
 
-Create one secret per namespace where agents will run:
+Create one secret per namespace where agents will run. The operator injects the entire secret as environment variables into every agent pod — add whichever keys your chosen provider requires.
 
+**Anthropic (default):**
 ```bash
 kubectl create secret generic agentops-operator-api-keys \
   --from-literal=ANTHROPIC_API_KEY=sk-ant-... \
   --from-literal=TASK_QUEUE_URL=redis.agent-infra.svc.cluster.local:6379
 ```
 
-The secret key name depends on your provider. `ANTHROPIC_API_KEY` is used by the default Anthropic provider. Other providers (once supported) will document their own key names. The `TASK_QUEUE_URL` is always required regardless of provider.
+`TASK_QUEUE_URL` is always required regardless of provider. The API key name matches what each provider reads from the environment (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, etc.).
 
 ### 4. Deploy your first agent
 

@@ -1,6 +1,6 @@
 ---
 title: Roadmap
-description: What arkonis-operator can do today and what is coming: agent memory, human approvals, multi-model support, event triggers, autoscaling, and observability.
+description: What ark-operator can do today and what is coming: agent memory, human approvals, multi-model support, event triggers, autoscaling, and observability.
 nav_order: 10
 ---
 
@@ -40,13 +40,15 @@ Any running agent can enqueue sub-tasks at runtime via the built-in `submit_subt
 For simple integrations that do not warrant a full MCP server, declare tools directly in `spec.tools` as HTTP endpoints. The agent calls your URL when the LLM invokes the tool and returns the response to the model. No extra infrastructure required.
 
 ### Pipeline-level timeouts
-Set `spec.timeoutSeconds` on any `ArkonisPipeline` to fail the entire pipeline if it hasn't completed within the configured wall-clock limit.
+Set `spec.timeoutSeconds` on any `ArkFlow` to fail the entire pipeline if it hasn't completed within the configured wall-clock limit.
 
 ### Token usage visibility and budget enforcement
-Every pipeline step reports how many input and output tokens it consumed. The pipeline status rolls this up into a total. Set `spec.maxTokens` on any `ArkonisPipeline` and the pipeline is automatically failed with reason `BudgetExceeded` if the limit is reached — before the next step runs. Token counts appear as a column in `kubectl get aopipe`.
+Every pipeline step reports how many input and output tokens it consumed. The pipeline status rolls this up into a total. Set `spec.maxTokens` on any `ArkFlow` and the pipeline is automatically failed with reason `BudgetExceeded` if the limit is reached — before the next step runs. Token counts appear as a column in `kubectl get arkflow`.
+
+Set `spec.limits.maxDailyTokens` on any `ArkAgent` to cap rolling 24-hour spend. When the limit is hit, the operator scales the agent pool to zero replicas and sets a `BudgetExceeded` condition. The deployment resumes automatically once the 24-hour window rotates and accumulated usage drops below the limit. Current 24-hour token usage appears as a column in `kubectl get arkagent`.
 
 ### Event-driven triggers
-Start agent workflows from external events. Define an `ArkonisTrigger` with a source type of `cron`, `webhook`, or `pipeline-output`. One trigger can fan out to multiple pipelines in parallel. Webhook triggers are authenticated via a per-trigger token stored in a Kubernetes Secret.
+Start agent workflows from external events. Define an `ArkEvent` with a source type of `cron`, `webhook`, or `pipeline-output`. One trigger can fan out to multiple pipelines in parallel. Webhook triggers are authenticated via a per-trigger token stored in a Kubernetes Secret.
 
 ---
 
@@ -72,7 +74,7 @@ Insert an approval gate anywhere in a pipeline. Execution pauses, a notification
 Run agents on OpenAI, Google Gemini, or other providers alongside Anthropic. Route tasks to the cheapest or fastest model that meets your quality bar. Mix models within a single pipeline.
 
 ### LiteLLM integration
-Optional integration with [LiteLLM](https://github.com/BerriAI/litellm) for teams that want cross-provider failover, unified rate limiting, or namespace-level token quotas. The operator injects the proxy endpoint automatically. You get the benefits of a smart LLM proxy without arkonis-operator needing to sit in the call path.
+Optional integration with [LiteLLM](https://github.com/BerriAI/litellm) for teams that want cross-provider failover, unified rate limiting, or namespace-level token quotas. The operator injects the proxy endpoint automatically. You get the benefits of a smart LLM proxy without ark-operator needing to sit in the call path.
 
 ### Cost controls and token budgets *(partial — per-run budget enforcement available today)*
 Per-run token budgets are available now via `spec.maxTokens`. Daily limits per agent, per namespace, and per team are planned for a future release.

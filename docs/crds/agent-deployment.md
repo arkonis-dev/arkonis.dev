@@ -1,23 +1,23 @@
 ---
-title: ArkonisDeployment
-description: ArkonisDeployment API reference — manage pools of AI agent instances with configurable models, system prompts, MCP tool servers, and inline webhook tools on Kubernetes.
+title: ArkAgent
+description: ArkAgent API reference — manage pools of AI agent instances with configurable models, system prompts, MCP tool servers, and inline webhook tools on Kubernetes.
 parent: CRD Reference
 nav_order: 1
 ---
 
-# ArkonisDeployment
+# ArkAgent
 
 **API:** `arkonis.dev/v1alpha1`
-**Kind:** `ArkonisDeployment`
-**Short name:** `aodep`
+**Kind:** `ArkAgent`
+**Short name:** `arkagent`
 
-The core resource. Analogous to a Kubernetes `Deployment` — manages a pool of agent instances running the same model, prompt, and tool configuration. The operator creates and maintains a backing `Deployment` for each `ArkonisDeployment`.
+The core resource. Analogous to a Kubernetes `Deployment` — manages a pool of agent instances running the same model, prompt, and tool configuration. The operator creates and maintains a backing `Deployment` for each `ArkAgent`.
 
 ## Example
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
-kind: ArkonisDeployment
+kind: ArkAgent
 metadata:
   name: research-agent
   namespace: default
@@ -59,8 +59,8 @@ spec:
 | `tools` | []WebhookToolSpec | no | Inline HTTP webhook tools available to agents without a full MCP server. The operator serialises these into the `AGENT_WEBHOOK_TOOLS` environment variable. |
 | `limits` | AgentLimits | no | Per-agent resource and token limits. |
 | `livenessProbe` | AgentProbe | no | Semantic health check configuration. |
-| `configRef` | LocalObjectReference | no | Name of an `ArkonisConfig` in the same namespace. Merged into effective system prompt and model settings. |
-| `memoryRef` | LocalObjectReference | no | Name of an `ArkonisMemory` in the same namespace. Injects memory backend config into agent pods. See [Agent Memory](/docs/concepts/memory). |
+| `configRef` | LocalObjectReference | no | Name of an `ArkSettings` in the same namespace. Merged into effective system prompt and model settings. |
+| `memoryRef` | LocalObjectReference | no | Name of an `ArkMemory` in the same namespace. Injects memory backend config into agent pods. See [Agent Memory](/docs/concepts/memory). |
 
 ### `mcpServers[]`
 
@@ -114,7 +114,7 @@ In addition to MCP and webhook tools, every agent pod has access to the followin
 | `conditions` | []Condition | Standard Kubernetes conditions (Available, Progressing, Degraded). |
 
 ```bash
-kubectl describe aodep research-agent
+kubectl describe arkagent research-agent
 # ...
 # Status:
 #   Ready Replicas:  2

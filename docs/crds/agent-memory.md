@@ -1,25 +1,25 @@
 ---
-title: ArkonisMemory
-description: ArkonisMemory API reference — configure persistent memory backends (Redis or vector store) for AI agents managed by arkonis-operator.
+title: ArkMemory
+description: ArkMemory API reference — configure persistent memory backends (Redis or vector store) for AI agents managed by ark-operator.
 parent: CRD Reference
 nav_order: 5
 ---
 
-# ArkonisMemory
+# ArkMemory
 
 **API:** `arkonis.dev/v1alpha1`
-**Kind:** `ArkonisMemory`
-**Short name:** `aomem`
+**Kind:** `ArkMemory`
+No short name
 
-Defines a persistent memory backend for agent instances. Reference it from an `ArkonisDeployment` via `spec.memoryRef` to give agents durable memory across tasks.
+Defines a persistent memory backend for agent instances. Reference it from an `ArkAgent` via `spec.memoryRef` to give agents durable memory across tasks.
 
-Analogous to a `PersistentVolumeClaim` — it declares where and how memory is stored, and `ArkonisDeployment` claims it by name.
+Analogous to a `PersistentVolumeClaim` — it declares where and how memory is stored, and `ArkAgent` claims it by name.
 
 ## Example: Redis backend
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
-kind: ArkonisMemory
+kind: ArkMemory
 metadata:
   name: research-memory
   namespace: default
@@ -36,7 +36,7 @@ spec:
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
-kind: ArkonisMemory
+kind: ArkMemory
 metadata:
   name: research-memory-vector
   namespace: default
@@ -51,11 +51,11 @@ spec:
     ttlSeconds: 86400
 ```
 
-## Referencing from ArkonisDeployment
+## Referencing from ArkAgent
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
-kind: ArkonisDeployment
+kind: ArkAgent
 metadata:
   name: research-agent
 spec:
@@ -101,11 +101,11 @@ spec:
 | `observedGeneration` | int64 | The `.metadata.generation` this status reflects. |
 
 ```bash
-kubectl get aomem
+kubectl get arkmemory
 # NAME               BACKEND        AGE
 # research-memory    redis          2m
 
-kubectl describe aomem research-memory
+kubectl describe arkmemory research-memory
 # ...
 # Status:
 #   Conditions:
@@ -125,4 +125,4 @@ kubectl describe aomem research-memory
 ## See also
 
 - [Agent Memory concept guide](/docs/concepts/memory)
-- [ArkonisDeployment reference](/docs/crds/agent-deployment) — `spec.memoryRef` field
+- [ArkAgent reference](/docs/crds/agent-deployment) — `spec.memoryRef` field

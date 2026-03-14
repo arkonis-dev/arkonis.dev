@@ -17,7 +17,7 @@ mermaid:
   version: "10"
 
 aux_links:
-  GitHub: https://github.com/arkonis-dev/arkonis-operator
+  GitHub: https://github.com/arkonis-dev/ark-operator
 
 footer_content: "Apache 2.0 · ARKONIS"
 

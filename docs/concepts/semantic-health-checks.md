@@ -1,6 +1,6 @@
 ---
 title: Semantic Health Checks
-description: How arkonis-operator validates AI agent health using LLM-based readiness probes that check output quality, not just liveness.
+description: How ark-operator validates AI agent health using LLM-based readiness probes that check output quality, not just liveness.
 parent: Concepts
 nav_order: 1
 ---
@@ -22,7 +22,7 @@ Each agent pod exposes two health endpoints on port `8080`:
 | `GET /healthz` | Liveness | Always returns `200 OK` if the process is running. Used by Kubernetes to decide whether to restart the container. |
 | `GET /readyz` | Semantic readiness | Calls the configured LLM provider with a validation prompt and checks the response. Returns `200 OK` if the output passes validation; returns `503 Service Unavailable` if it fails. |
 
-When `/readyz` returns `503`, Kubernetes marks the pod `NotReady`. The `ArkonisService` stops routing tasks to that pod. The operator logs the failure and the pod continues trying — if the underlying issue resolves (e.g., transient API error), the pod recovers automatically.
+When `/readyz` returns `503`, Kubernetes marks the pod `NotReady`. The `ArkService` stops routing tasks to that pod. The operator logs the failure and the pod continues trying — if the underlying issue resolves (e.g., transient API error), the pod recovers automatically.
 
 ## How the readiness probe works
 

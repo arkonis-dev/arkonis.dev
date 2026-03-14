@@ -1,23 +1,23 @@
 ---
-title: ArkonisConfig
-description: ArkonisConfig API reference — reusable prompt fragments and model settings shared across multiple ArkonisDeployments in arkonis-operator.
+title: ArkSettings
+description: ArkSettings API reference — reusable prompt fragments and model settings shared across multiple ArkAgents in ark-operator.
 parent: CRD Reference
 nav_order: 3
 ---
 
-# ArkonisConfig
+# ArkSettings
 
 **API:** `arkonis.dev/v1alpha1`
-**Kind:** `ArkonisConfig`
-**Short name:** `aocfg`
+**Kind:** `ArkSettings`
+No short name
 
-Analogous to a Kubernetes `ConfigMap`. Stores reusable prompt fragments and model settings that can be referenced from multiple `ArkonisDeployment` resources. Keeps configuration DRY — define a persona or output format once and share it across many agents.
+Analogous to a Kubernetes `ConfigMap`. Stores reusable prompt fragments and model settings that can be referenced from multiple `ArkAgent` resources. Keeps configuration DRY — define a persona or output format once and share it across many agents.
 
 ## Example
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
-kind: ArkonisConfig
+kind: ArkSettings
 metadata:
   name: analyst-base
   namespace: default
@@ -41,7 +41,7 @@ spec:
 
 ### `promptFragments`
 
-A key-value map of prompt fragment names to text values. When an `ArkonisDeployment` references this config via `spec.configRef`, the operator appends each fragment to the agent's system prompt in definition order.
+A key-value map of prompt fragment names to text values. When an `ArkAgent` references this config via `spec.configRef`, the operator appends each fragment to the agent's system prompt in definition order.
 
 Reserved keys with defined merge behavior:
 
@@ -52,20 +52,20 @@ Reserved keys with defined merge behavior:
 
 Other keys are appended in alphabetical order.
 
-## Referencing ArkonisConfig from ArkonisDeployment
+## Referencing ArkSettings from ArkAgent
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
-kind: ArkonisDeployment
+kind: ArkAgent
 metadata:
   name: analyst-agent
 spec:
   model: claude-sonnet-4-20250514
   systemPrompt: |
     Analyze the provided dataset and identify key trends.
-  configRef: analyst-base   # references the ArkonisConfig above
+  configRef: analyst-base   # references the ArkSettings above
 ```
 
 The operator resolves the `configRef` during reconciliation and builds the effective system prompt by merging `promptFragments`. The `temperature` and `outputFormat` values are injected as environment variables into agent pods alongside the standard operator-managed variables.
 
-`ArkonisConfig` and the referencing `ArkonisDeployment` must be in the same namespace.
+`ArkSettings` and the referencing `ArkAgent` must be in the same namespace.

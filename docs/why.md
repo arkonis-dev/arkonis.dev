@@ -1,14 +1,14 @@
 ---
-title: Why arkonis-operator
-description: Why engineering teams running AI agents in production need arkonis-operator: cost controls, semantic health checks, GitOps, and Kubernetes-native agent management.
+title: Why ark-operator
+description: Why engineering teams running AI agents in production need ark-operator: cost controls, semantic health checks, GitOps, and Kubernetes-native agent management.
 nav_order: 3
 ---
 
-# Why arkonis-operator
+# Why ark-operator
 
 If you are a solo developer experimenting with LLMs, you do not need this. Claude Code, the Anthropic API, or a simple Python script will serve you better.
 
-arkonis-operator is for **engineering teams running agents in production at scale**, where the problems are operational, not algorithmic.
+ark-operator is for **engineering teams running agents in production at scale**, where the problems are operational, not algorithmic.
 
 ---
 
@@ -16,7 +16,7 @@ arkonis-operator is for **engineering teams running agents in production at scal
 
 ### "We have agents across multiple teams. How do we manage them?"
 
-The same way you manage any other production workload: Kubernetes. Your platform team already knows the tooling, the access controls, and the deployment patterns. arkonis-operator plugs agents into that existing system instead of introducing a parallel management layer.
+The same way you manage any other production workload: Kubernetes. Your platform team already knows the tooling, the access controls, and the deployment patterns. ark-operator plugs agents into that existing system instead of introducing a parallel management layer.
 
 ### "An agent is burning through our API budget"
 
@@ -36,7 +36,7 @@ These are applied to every pod the operator creates, regardless of what the agen
 
 Standard Kubernetes liveness probes check whether a process is running. They cannot tell you whether an LLM is producing useful output.
 
-arkonis-operator introduces **semantic health checks**: a secondary LLM call that validates the agent's actual output quality. Pods that fail the semantic probe are removed from routing until they recover, exactly like a failing HTTP health check.
+ark-operator introduces **semantic health checks**: a secondary LLM call that validates the agent's actual output quality. Pods that fail the semantic probe are removed from routing until they recover, exactly like a failing HTTP health check.
 
 ```yaml
 spec:
@@ -56,7 +56,7 @@ Every agent definition goes through `kubectl`, RBAC, and git. Kubernetes already
 
 ### "We need to chain agents together without writing orchestration code"
 
-ArkonisPipeline defines multi-agent DAGs declaratively. Outputs from one agent are templated directly into the next step's input:
+ArkFlow defines multi-agent DAGs declaratively. Outputs from one agent are templated directly into the next step's input:
 
 ```yaml
 spec:

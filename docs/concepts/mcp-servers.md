@@ -1,6 +1,6 @@
 ---
 title: MCP Servers
-description: Connect MCP (Model Context Protocol) tool servers to your AI agents running on Kubernetes with arkonis-operator.
+description: Connect MCP (Model Context Protocol) tool servers to your AI agents running on Kubernetes with ark-operator.
 parent: Concepts
 nav_order: 2
 ---
@@ -11,9 +11,9 @@ nav_order: 2
 
 [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) is a standard interface for providing tools and context to LLMs. An MCP server exposes a set of callable tools: functions the model can invoke during a conversation, such as web search, database queries, file access, and API calls.
 
-arkonis-operator connects agent pods to MCP servers at startup, making those tools available to the configured LLM provider's tool-use loop.
+ark-operator connects agent pods to MCP servers at startup, making those tools available to the configured LLM provider's tool-use loop.
 
-## How arkonis-operator connects
+## How ark-operator connects
 
 MCP servers are specified in `spec.mcpServers`. At pod startup, the agent runtime reads this list from the `AGENT_MCP_SERVERS` environment variable (injected as a JSON array by the operator) and establishes SSE (Server-Sent Events) connections to each server.
 
@@ -37,7 +37,7 @@ spec:
 
 ## Tool name prefixing
 
-To avoid collisions when multiple MCP servers expose tools with the same name, arkonis-operator prefixes tool names with the server name using double underscore:
+To avoid collisions when multiple MCP servers expose tools with the same name, ark-operator prefixes tool names with the server name using double underscore:
 
 ```
 web-search__search

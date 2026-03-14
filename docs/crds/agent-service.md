@@ -1,23 +1,23 @@
 ---
-title: ArkonisService
-description: ArkonisService API reference — route tasks to AI agents using round-robin, least-busy, or random load balancing strategies in arkonis-operator.
+title: ArkService
+description: ArkService API reference — route tasks to AI agents using round-robin, least-busy, or random load balancing strategies in ark-operator.
 parent: CRD Reference
 nav_order: 2
 ---
 
-# ArkonisService
+# ArkService
 
 **API:** `arkonis.dev/v1alpha1`
-**Kind:** `ArkonisService`
+**Kind:** `ArkService`
 **Short name:** `aosvc`
 
-Analogous to a Kubernetes `Service`. Routes incoming tasks to available agent instances, decoupling task producers from the agent pool. An `ArkonisService` selects a target `ArkonisDeployment` and applies a routing strategy to distribute tasks across ready pods.
+Analogous to a Kubernetes `Service`. Routes incoming tasks to available agent instances, decoupling task producers from the agent pool. An `ArkService` selects a target `ArkAgent` and applies a routing strategy to distribute tasks across ready pods.
 
 ## Example
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
-kind: ArkonisService
+kind: ArkService
 metadata:
   name: research-service
   namespace: default
@@ -37,7 +37,7 @@ spec:
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `selector` | ServiceSelector | yes | Identifies the target `ArkonisDeployment`. |
+| `selector` | ServiceSelector | yes | Identifies the target `ArkAgent`. |
 | `routing` | RoutingSpec | no | Task routing configuration. |
 | `ports` | []PortSpec | no | Ports exposed by the service. |
 
@@ -45,7 +45,7 @@ spec:
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `arkonisDeployment` | string | yes | Name of the `ArkonisDeployment` in the same namespace to route tasks to. |
+| `arkonisDeployment` | string | yes | Name of the `ArkAgent` in the same namespace to route tasks to. |
 
 ### `routing`
 

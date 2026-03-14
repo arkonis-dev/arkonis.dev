@@ -1,15 +1,15 @@
 ---
-title: ArkonisPipeline
-description: ArkonisPipeline API reference — define DAG workflows where AI agent outputs feed into subsequent agent inputs in arkonis-operator.
+title: ArkFlow
+description: ArkFlow API reference — define DAG workflows where AI agent outputs feed into subsequent agent inputs in ark-operator.
 parent: CRD Reference
 nav_order: 4
 ---
 
-# ArkonisPipeline
+# ArkFlow
 
 **API:** `arkonis.dev/v1alpha1`
-**Kind:** `ArkonisPipeline`
-**Short name:** `aopipe`
+**Kind:** `ArkFlow`
+**Short name:** none
 
 A novel resource with no Kubernetes equivalent. Defines a directed acyclic graph (DAG) of agents where the output of one step feeds into the input of the next. The primitive for declarative multi-agent workflows.
 
@@ -17,7 +17,7 @@ A novel resource with no Kubernetes equivalent. Defines a directed acyclic graph
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
-kind: ArkonisPipeline
+kind: ArkFlow
 metadata:
   name: research-write-review
   namespace: default
@@ -90,7 +90,7 @@ graph LR
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `name` | string | yes | Unique step name within the pipeline. Referenced in template expressions as `{{ .steps.<name>.output }}`. |
-| `arkonisDeployment` | string | yes | Name of the `ArkonisDeployment` in the same namespace that will execute this step. |
+| `arkonisDeployment` | string | yes | Name of the `ArkAgent` in the same namespace that will execute this step. |
 | `dependsOn` | []string | no | List of step names that must complete (Succeeded or Skipped) before this step runs. |
 | `inputs` | map[string]string | no | Key-value inputs passed to the agent for this step. Values are template expressions or literal strings. |
 | `outputSchema` | string | no | JSON Schema (as a string) describing the expected output shape. The agent is instructed to respond in this format and the output is validated before the step is marked Succeeded. Downstream steps can reference fields via `{{ .steps.<name>.data.<field> }}`. |
@@ -138,8 +138,8 @@ Templates are evaluated at runtime. Missing keys resolve to an empty string.
 ## Alpha limitations
 
 {: .warning }
-ArkonisPipeline is in early alpha. The following limitations apply:
+ArkFlow is in early alpha. The following limitations apply:
 
 - Parallel step execution (steps with no shared `dependsOn` ancestor) is not yet implemented. Steps run in dependency order.
 - Pipeline inputs are currently limited to string values.
-- Requires Redis — `TASK_QUEUE_URL` must be set in the `arkonis-operator-api-keys` secret.
+- Requires Redis — `TASK_QUEUE_URL` must be set in the `ark-operator-api-keys` secret.

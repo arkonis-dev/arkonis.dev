@@ -61,7 +61,7 @@
       <!-- Hero -->
       <section class="hero">
         <div class="container">
-          <div class="badge">v0.4.1 · Apache 2.0</div>
+          <div class="badge"><span id="hero-version">v0.4.1</span> · Apache 2.0</div>
           <h1>
             Kubernetes-native AI agent infrastructure
             <span class="hero-h1-sub">Operator for clusters · <code style="font-size:inherit;color:var(--green);background:var(--green-dim);padding:2px 8px;border-radius:4px;">ark</code> CLI for local runs</span>
@@ -137,7 +137,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span>
             <span class="stat-label">License</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">v0.4.1</span>
+            <span class="stat-value" id="stat-version">v0.4.1</span>
             <span class="stat-label">Latest release</span>
           </div>
           <div class="stat-item">
@@ -643,6 +643,19 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span>
         document.getElementById('pane-' + tab).classList.add('active');
         document.getElementById('terminal-title').textContent = terminalTitles[tab];
       }
+    </script>
+    <script>
+      fetch('https://api.github.com/repos/arkonis-dev/ark-operator/releases/latest')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (!data.tag_name) return;
+          var v = data.tag_name;
+          var hero = document.getElementById('hero-version');
+          var stat = document.getElementById('stat-version');
+          if (hero) hero.textContent = v;
+          if (stat) stat.textContent = v;
+        })
+        .catch(function() {});
     </script>
   </body>
 </html>

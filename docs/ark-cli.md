@@ -24,7 +24,7 @@ Verify:
 
 ```bash
 ark --version
-# ark v0.4.1 (go1.22)
+# ark v0.5.3 (go1.22)
 ```
 
 ### Binary download
@@ -266,6 +266,6 @@ For production workloads, deploy the operator to a Kubernetes cluster. Use the C
 
 ## Next steps
 
-- [Getting Started](./getting-started) — deploy the operator to a local kind cluster
-- [ArkFlow reference](./concepts/arkflow) — full flow spec documentation
-- [Roadmap](./roadmap) — what's coming next
+- [Getting Started](../getting-started) — deploy the operator to a local kind cluster
+- [ArkFlow reference](../concepts/arkflow) — full flow spec documentation
+- [Roadmap](../roadmap) — what's coming next

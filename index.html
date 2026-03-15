@@ -6,60 +6,31 @@
     <title>ARKONIS: Kubernetes-native AI agent infrastructure</title>
     <meta
       name="description"
-      content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload."
+      content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload — or run locally with the ark CLI."
     />
 
     <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/favicon-32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/favicon-16.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/assets/apple-touch-icon.png"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://arkonis.dev/" />
     <meta property="og:site_name" content="ARKONIS" />
-    <meta
-      property="og:title"
-      content="ARKONIS: Kubernetes-native AI agent infrastructure"
-    />
-    <meta
-      property="og:description"
-      content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload. kubectl apply and you're done."
-    />
+    <meta property="og:title" content="ARKONIS: Kubernetes-native AI agent infrastructure" />
+    <meta property="og:description" content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload. kubectl apply and you're done." />
     <meta property="og:image" content="https://arkonis.dev/assets/logo.png" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="ARKONIS: Kubernetes-native AI agent infrastructure"
-    />
-    <meta
-      name="twitter:description"
-      content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload. kubectl apply and you're done."
-    />
+    <meta name="twitter:title" content="ARKONIS: Kubernetes-native AI agent infrastructure" />
+    <meta name="twitter:description" content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload. kubectl apply and you're done." />
     <meta name="twitter:image" content="https://arkonis.dev/assets/logo.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script type="application/ld+json">
       {
@@ -69,77 +40,6 @@
         "url": "https://arkonis.dev"
       }
     </script>
-    <style>
-      .acronym-section {
-        padding: 80px 0;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(99, 102, 241, 0.04) 50%,
-          transparent 100%
-        );
-      }
-      .acronym-inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
-      .acronym-title {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--clr-muted, #6b7280);
-        margin-bottom: 8px;
-      }
-      .acronym-row {
-        display: flex;
-        align-items: baseline;
-        gap: 16px;
-        width: 100%;
-        max-width: 540px;
-      }
-      .acronym-letter {
-        font-family: var(--font-mono);
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #818cf8;
-        min-width: 28px;
-        text-align: right;
-        line-height: 1;
-      }
-      .acronym-dot {
-        color: #374151;
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-      }
-      .acronym-word {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #f9fafb;
-        min-width: 140px;
-      }
-      .acronym-desc {
-        font-size: 0.85rem;
-        color: #6b7280;
-        font-style: italic;
-      }
-      .acronym-divider {
-        width: 1px;
-        height: 24px;
-        background: rgba(99, 102, 241, 0.2);
-        margin: 0 auto;
-      }
-      @media (max-width: 600px) {
-        .acronym-desc {
-          display: none;
-        }
-        .acronym-row {
-          max-width: 320px;
-        }
-      }
-    </style>
   </head>
   <body>
     <header class="site-header">
@@ -150,14 +50,9 @@
         </a>
         <nav>
           <a href="https://arkonis.dev/docs/">Docs</a>
+          <a href="https://arkonis.dev/docs/ark-cli">CLI</a>
           <a href="https://arkonis.dev/docs/roadmap">Roadmap</a>
-          <a
-            href="https://github.com/arkonis-dev/ark-operator"
-            class="btn-outline"
-            target="_blank"
-            rel="noopener"
-            >GitHub</a
-          >
+          <a href="https://github.com/arkonis-dev/ark-operator" class="btn-outline" target="_blank" rel="noopener">GitHub</a>
         </nav>
       </div>
     </header>
@@ -166,79 +61,157 @@
       <!-- Hero -->
       <section class="hero">
         <div class="container">
-          <div class="badge">v1alpha1 · Apache 2.0</div>
-          <h1>Kubernetes-native<br />AI agent infrastructure</h1>
+          <div class="badge">v0.4.1 · Apache 2.0</div>
+          <h1>
+            Kubernetes-native AI agent infrastructure
+            <span class="hero-h1-sub">Operator for clusters · <code style="font-size:inherit;color:var(--green);background:var(--green-dim);padding:2px 8px;border-radius:4px;">ark</code> CLI for local runs</span>
+          </h1>
           <p class="hero-sub">
             Deploy, scale, and manage agentic workloads the same way you manage
-            any other workload. <code>kubectl apply</code> and you're done.
+            any other workload — or skip the cluster entirely and run flows
+            locally with <code>ark run</code>.
           </p>
 
-          <div class="code-block">
-            <div class="code-header">
-              <span class="dot red"></span><span class="dot yellow"></span
-              ><span class="dot green"></span>
-              <span class="code-title">terminal</span>
+          <!-- Tabbed terminal -->
+          <div class="terminal-tabs-wrapper">
+            <div class="terminal-session-bar">
+              <button class="terminal-tab active" onclick="switchTab(event,'kubectl')">kubectl</button>
+              <button class="terminal-tab" onclick="switchTab(event,'ark')">ark run</button>
             </div>
-            <pre><code><span class="cmd">$</span> kubectl apply -f research-agent.yaml
-<span class="out">arkonisdeployment.arkonis.dev/research-agent created</span>
+            <div class="terminal-window">
+              <div class="terminal-chrome">
+                <div class="terminal-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <span class="terminal-window-title" id="terminal-title">kubectl — research-agent.yaml</span>
+              </div>
+              <div class="terminal-body">
+                <div class="terminal-pane active" id="pane-kubectl">
+                  <pre><code><span class="cmd">$</span> kubectl apply -f research-agent.yaml
+<span class="out">arkagent.arkonis.dev/research-agent created</span>
 
 <span class="cmd">$</span> kubectl get arkagent
 <span class="out">NAME              MODEL                      REPLICAS   READY   AGE
-research-agent    claude-sonnet-4-20250514   5          5       2m</span></code></pre>
+research-agent    claude-sonnet-4-20250514   5          5       2m</span>
+
+<span class="cmd">$</span> kubectl apply -f research-flow.yaml
+<span class="out">arkflow.arkonis.dev/research-then-summarize created</span><span class="cursor"></span></code></pre>
+                </div>
+                <div class="terminal-pane" id="pane-ark">
+                  <pre><code><span class="cmd">$</span> ark run quickstart.yaml --provider mock --watch
+<span class="out">  research         </span><span class="warn">[running]</span>
+<span class="out">  research         </span><span class="ok">[done]</span><span class="out">    1842 tokens  2.3s</span>
+<span class="out">    └─ Large language models are transformer-based...</span>
+<span class="out">  summarize        </span><span class="warn">[running]</span>
+<span class="out">  summarize        </span><span class="ok">[done]</span><span class="out">    312 tokens  0.8s</span>
+<span class="out">    └─ • LLMs use transformer architecture...</span>
+
+<span class="ok">Flow Succeeded in 3.1s — total: 2154 tokens</span><span class="cursor"></span></code></pre>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="hero-cta">
-            <a
-              href="https://arkonis.dev/docs/getting-started"
-              class="btn-primary"
-              target="_blank"
-              rel="noopener"
-              >Get started</a
-            >
-            <a
-              href="https://github.com/arkonis-dev/ark-operator"
-              class="btn-ghost"
-              target="_blank"
-              rel="noopener"
-              >View on GitHub →</a
-            >
+            <a href="https://arkonis.dev/docs/getting-started" class="btn-primary" target="_blank" rel="noopener">Deploy to Kubernetes →</a>
+            <a href="https://arkonis.dev/docs/ark-cli" class="btn-ghost" target="_blank" rel="noopener">Try locally with ark →</a>
           </div>
           <div class="hero-star">
-            <a
-              class="github-button"
-              href="https://github.com/arkonis-dev/ark-operator"
-              data-icon="octicon-star"
-              data-size="large"
-              data-show-count="true"
-              aria-label="Star arkonis-dev/ark-operator on GitHub"
-              >Star</a
-            >
+            <a class="github-button"
+               href="https://github.com/arkonis-dev/ark-operator"
+               data-icon="octicon-star"
+               data-size="large"
+               data-show-count="true"
+               aria-label="Star arkonis-dev/ark-operator on GitHub">Star</a>
           </div>
         </div>
       </section>
+
+      <!-- Stats bar -->
+      <div class="stats-bar">
+        <div class="container">
+          <div class="stat-item">
+            <span class="stat-value">Apache 2.0</span>
+            <span class="stat-label">License</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">v0.4.1</span>
+            <span class="stat-label">Latest release</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">Anthropic · OpenAI</span>
+            <span class="stat-label">Providers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">Go 1.22+</span>
+            <span class="stat-label">Runtime</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <!-- Try it in 30 seconds -->
+      <section class="try-it">
+        <div class="container">
+          <div class="try-it-inner">
+            <div class="try-it-text">
+              <h2>Try it in 30 seconds</h2>
+              <p>
+                No cluster required. Install the <code>ark</code> CLI, point it at a flow file,
+                and watch your agents run locally. Swap <code>--provider mock</code> for
+                <code>--provider anthropic</code> when you're ready to go live.
+              </p>
+              <div class="try-install">
+                <span class="prompt">$</span>go install github.com/arkonis-dev/ark-operator/cmd/ark@latest
+              </div>
+              <div style="margin-top:10px;" class="try-install">
+                <span class="prompt">$</span>ark run quickstart.yaml --provider mock --watch
+              </div>
+            </div>
+            <div class="watch-block">
+              <div class="watch-chrome">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="watch-title">ark run quickstart.yaml --provider mock --watch</span>
+              </div>
+              <div class="watch-body">
+                <pre><code><span class="watch-meta">  research             </span><span class="watch-step-run">[running]</span>
+<span class="watch-meta">  research             </span><span class="watch-step-done">[done]</span><span class="watch-meta">    1842 tokens  2.3s</span>
+<span class="watch-meta">    └─ </span><span class="watch-output">Large language models are transformer-based...</span>
+<span class="watch-meta">  summarize            </span><span class="watch-step-run">[running]</span>
+<span class="watch-meta">  summarize            </span><span class="watch-step-done">[done]</span><span class="watch-meta">    312 tokens  0.8s</span>
+<span class="watch-meta">    └─ </span><span class="watch-output">• LLMs use transformer architecture...</span>
+
+<span class="watch-summary">Flow Succeeded in 3.1s — total: 2154 tokens</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
 
       <!-- ARKONIS Acronym -->
       <section class="acronym-section">
         <div class="container">
           <div class="acronym-inner">
             <div class="acronym-title">What ARKONIS stands for</div>
-
             <div class="acronym-row">
               <span class="acronym-letter">A</span>
               <span class="acronym-dot">—</span>
               <span class="acronym-word">Agentic</span>
-              <span class="acronym-desc"
-                >LLM-powered agents as first-class resources</span
-              >
+              <span class="acronym-desc">LLM-powered agents as first-class resources</span>
             </div>
             <div class="acronym-divider"></div>
             <div class="acronym-row">
               <span class="acronym-letter">R</span>
               <span class="acronym-dot">—</span>
               <span class="acronym-word">Reconciler</span>
-              <span class="acronym-desc"
-                >Kubernetes control loop at the core</span
-              >
+              <span class="acronym-desc">Kubernetes control loop at the core</span>
             </div>
             <div class="acronym-divider"></div>
             <div class="acronym-row">
@@ -259,44 +232,36 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
               <span class="acronym-letter">N</span>
               <span class="acronym-dot">—</span>
               <span class="acronym-word">Native</span>
-              <span class="acronym-desc"
-                >kubectl, RBAC, namespaces — no wrappers</span
-              >
+              <span class="acronym-desc">kubectl, RBAC, namespaces — no wrappers</span>
             </div>
             <div class="acronym-divider"></div>
             <div class="acronym-row">
               <span class="acronym-letter">I</span>
               <span class="acronym-dot">—</span>
               <span class="acronym-word">Inference</span>
-              <span class="acronym-desc"
-                >Model calls, tool use, MCP servers</span
-              >
+              <span class="acronym-desc">Model calls, tool use, MCP servers</span>
             </div>
             <div class="acronym-divider"></div>
             <div class="acronym-row">
               <span class="acronym-letter">S</span>
               <span class="acronym-dot">—</span>
               <span class="acronym-word">System</span>
-              <span class="acronym-desc"
-                >System prompts + semantic health checks</span
-              >
+              <span class="acronym-desc">System prompts + semantic health checks</span>
             </div>
           </div>
         </div>
       </section>
 
+      <hr class="section-divider" />
+
       <!-- Problem -->
       <section class="problem">
         <div class="container">
-          <h2>
-            Agents are going to production.<br />The tooling hasn't caught up.
-          </h2>
+          <h2>Agents are going to production.<br />The tooling hasn't caught up.</h2>
           <div class="problem-grid">
             <div class="problem-item">
               <span class="icon">⚠</span>
-              <p>
-                Running agents as one-off scripts with no lifecycle management
-              </p>
+              <p>Running agents as one-off scripts with no lifecycle management</p>
             </div>
             <div class="problem-item">
               <span class="icon">⚠</span>
@@ -308,10 +273,7 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
             </div>
             <div class="problem-item">
               <span class="icon">⚠</span>
-              <p>
-                Restarting stuck agents by hand when they silently produce bad
-                output
-              </p>
+              <p>Restarting stuck agents by hand when they silently produce bad output</p>
             </div>
           </div>
           <p class="problem-conclusion">
@@ -321,24 +283,27 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
         </div>
       </section>
 
+      <hr class="section-divider" />
+
       <!-- Concepts -->
       <section class="concepts" id="concepts">
         <div class="container">
           <h2>First-class primitives for agents</h2>
           <p class="section-sub">
-            ARKONIS extends the Kubernetes API with five new resource types.
+            ARKONIS extends the Kubernetes API with six new resource types.
           </p>
 
-          <div class="concepts-grid">
-            <div class="concept-card">
-              <div class="concept-kind">ArkAgent</div>
-              <div class="concept-analog">like <code>Deployment</code></div>
-              <p>
-                Manages a pool of agent instances running the same model,
-                prompt, and tool configuration. Handles scheduling, scaling, and
-                health checking.
-              </p>
-              <pre class="concept-yaml"><code>spec:
+          <div class="concepts-accordion">
+
+            <details class="concept-item" data-kind="ArkAgent" open>
+              <summary>
+                <span class="concept-kind">ArkAgent</span>
+                <span class="concept-analog">like <code>Deployment</code> — manages a pool of agent replicas</span>
+                <span class="concept-chevron">▼</span>
+              </summary>
+              <div class="concept-body">
+                <p>Manages a pool of agent instances running the same model, system prompt, and MCP tool servers. Handles scheduling, scaling, and semantic health checking.</p>
+                <pre class="concept-yaml"><code>spec:
   replicas: 5
   model: claude-sonnet-4-20250514
   systemPrompt: |
@@ -346,78 +311,105 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
   mcpServers:
     - name: web-search
       url: https://search.mcp.internal/sse</code></pre>
-            </div>
+              </div>
+            </details>
 
-            <div class="concept-card">
-              <div class="concept-kind">ArkService</div>
-              <div class="concept-analog">like <code>Service</code></div>
-              <p>
-                Routes incoming tasks to available agent instances. Decouples
-                task producers from the agent pool with configurable load
-                balancing strategies.
-              </p>
-              <pre class="concept-yaml"><code>spec:
+            <details class="concept-item" data-kind="ArkService">
+              <summary>
+                <span class="concept-kind">ArkService</span>
+                <span class="concept-analog">like <code>Service</code> — routes tasks to available agents</span>
+                <span class="concept-chevron">▼</span>
+              </summary>
+              <div class="concept-body">
+                <p>Routes incoming tasks to available agent instances. Decouples task producers from the agent pool with configurable load balancing: round-robin, least-busy, or random.</p>
+                <pre class="concept-yaml"><code>spec:
   selector:
-    arkonisDeployment: research-agent
+    arkAgent: research-agent
   routing:
     strategy: least-busy
   ports:
     - protocol: A2A
       port: 8080</code></pre>
-            </div>
+              </div>
+            </details>
 
-            <div class="concept-card">
-              <div class="concept-kind">ArkSettings</div>
-              <div class="concept-analog">like <code>ConfigMap</code></div>
-              <p>
-                Reusable prompt fragments and model settings. Reference from
-                multiple ArkAgents to keep configuration in one place.
-              </p>
-              <pre class="concept-yaml"><code>spec:
+            <details class="concept-item" data-kind="ArkSettings">
+              <summary>
+                <span class="concept-kind">ArkSettings</span>
+                <span class="concept-analog">like <code>ConfigMap</code> — shared prompt config</span>
+                <span class="concept-chevron">▼</span>
+              </summary>
+              <div class="concept-body">
+                <p>Reusable prompt fragments and model settings. Reference from multiple ArkAgents to keep configuration in one place and out of application code.</p>
+                <pre class="concept-yaml"><code>spec:
   temperature: "0.3"
   outputFormat: structured-json
   promptFragments:
     persona: "Expert analyst..."
     outputRules: "Always cite sources."</code></pre>
-            </div>
+              </div>
+            </details>
 
-            <div class="concept-card">
-              <div class="concept-kind">ArkFlow</div>
-              <div class="concept-analog">novel primitive</div>
-              <p>
-                Chains agents into directed acyclic graphs where outputs feed
-                into inputs. The primitive for orchestrating multi-agent
-                workflows declaratively.
-              </p>
-              <pre class="concept-yaml"><code>spec:
+            <details class="concept-item" data-kind="ArkFlow">
+              <summary>
+                <span class="concept-kind">ArkFlow</span>
+                <span class="concept-analog">novel primitive — declarative multi-agent DAG</span>
+                <span class="concept-chevron">▼</span>
+              </summary>
+              <div class="concept-body">
+                <p>Chains agents into directed acyclic graphs where outputs feed into inputs. Supports conditionals, loops, timeouts, and structured JSON passing between steps.</p>
+                <pre class="concept-yaml"><code>spec:
   steps:
     - name: research
-      arkonisDeployment: research-agent
+      arkAgent: research-agent
     - name: writer
       dependsOn: [research]
-      arkonisDeployment: writer-agent</code></pre>
-            </div>
-
-            <div class="concept-card">
-              <div class="concept-kind">ArkMemory</div>
-              <div class="concept-analog">
-                like <code>PersistentVolumeClaim</code>
+      arkAgent: writer-agent
+      inputs:
+        prompt: "{{ .steps.research.output }}"</code></pre>
               </div>
-              <p>
-                Defines the persistent memory backend for agent instances.
-                Agents remember context across many tasks, not just within a
-                single conversation. Supports Redis and vector stores.
-              </p>
-              <pre class="concept-yaml"><code>spec:
+            </details>
+
+            <details class="concept-item" data-kind="ArkMemory">
+              <summary>
+                <span class="concept-kind">ArkMemory</span>
+                <span class="concept-analog">like <code>PVC</code> — persistent agent memory</span>
+                <span class="concept-chevron">▼</span>
+              </summary>
+              <div class="concept-body">
+                <p>Configures a persistent memory backend for agent instances. Agents remember context across many tasks, not just within a single conversation. Supports Redis and vector stores.</p>
+                <pre class="concept-yaml"><code>spec:
   backend: vector-store
   vectorStore:
     provider: qdrant
     endpoint: http://qdrant:6333
     collection: research-memories</code></pre>
-            </div>
+              </div>
+            </details>
+
+            <details class="concept-item" data-kind="ArkEvent">
+              <summary>
+                <span class="concept-kind">ArkEvent</span>
+                <span class="concept-analog">like <code>CronJob</code> / <code>Ingress</code> — event triggers</span>
+                <span class="concept-chevron">▼</span>
+              </summary>
+              <div class="concept-body">
+                <p>Fires flows on a schedule, on inbound webhook calls, or when another flow produces output. One trigger can fan-out to multiple downstream flows in parallel.</p>
+                <pre class="concept-yaml"><code>spec:
+  source:
+    type: cron
+    cron: "0 9 * * 1-5"
+  flows:
+    - name: daily-briefing
+      arkFlow: briefing-flow</code></pre>
+              </div>
+            </details>
+
           </div>
         </div>
       </section>
+
+      <hr class="section-divider" />
 
       <!-- How it works -->
       <section class="how-it-works" id="how-it-works">
@@ -476,6 +468,90 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
         </div>
       </section>
 
+      <hr class="section-divider" />
+
+      <!-- ARK CLI section -->
+      <section class="ark-cli-section" id="ark-cli">
+        <div class="container">
+          <h2>The <code style="font-size:inherit;">ark</code> local CLI</h2>
+          <p class="section-sub">
+            Full flow execution without a cluster. Same YAML, same agents, same output.
+          </p>
+          <div class="cli-feature-grid">
+            <div class="cli-features">
+              <div class="cli-feature">
+                <div class="cli-feature-cmd">ark run &lt;flow.yaml&gt;</div>
+                <h3>Execute locally</h3>
+                <p>
+                  Run any <code>ArkFlow</code> definition directly from your terminal.
+                  No operator, no Redis, no cluster required. Perfect for development
+                  and CI pipelines.
+                </p>
+              </div>
+              <div class="cli-feature">
+                <div class="cli-feature-cmd">ark validate &lt;flow.yaml&gt;</div>
+                <h3>Validate before you run</h3>
+                <p>
+                  Checks DAG structure for cycles, validates agent references, verifies
+                  <code>dependsOn</code> chains, and reports schema errors — before any
+                  model call is made.
+                </p>
+              </div>
+              <div class="cli-feature">
+                <div class="cli-feature-cmd">--provider auto</div>
+                <h3>Auto-detect provider</h3>
+                <p>
+                  Pass <code>--provider auto</code> and the CLI infers the right SDK
+                  from the model name: <code>claude-*</code> routes to Anthropic,
+                  <code>gpt-*</code> / <code>o3-*</code> routes to OpenAI.
+                  No config required.
+                </p>
+              </div>
+              <div class="cli-feature">
+                <div class="cli-feature-cmd">--watch</div>
+                <h3>Stream step output</h3>
+                <p>
+                  Print each step's status and a truncated output snippet as it
+                  completes. Shows token usage and wall-clock time per step, plus
+                  a flow summary at the end.
+                </p>
+              </div>
+            </div>
+            <div class="cli-terminal">
+              <div class="cli-terminal-chrome">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="cli-terminal-title">ark validate + run</span>
+              </div>
+              <div class="cli-terminal-body">
+                <pre><code><span class="cmd">$</span> ark validate quickstart.yaml
+<span class="ok">  DAG          ok  (2 steps, 0 cycles)</span>
+<span class="ok">  Agents       ok  (research-agent, summarizer)</span>
+<span class="ok">  Schema       ok</span>
+<span class="ok">Validation passed.</span>
+
+<span class="cmd">$</span> ark run quickstart.yaml \
+    --provider auto \
+    --watch
+<span class="out">  research         </span><span class="warn">[running]</span>
+<span class="out">  research         </span><span class="ok">[done]</span><span class="out">    1842 tokens  2.3s</span>
+<span class="out">    └─ </span><span class="out" style="font-style:italic;">Large language models are transformer-based...</span>
+<span class="out">  summarize        </span><span class="warn">[running]</span>
+<span class="out">  summarize        </span><span class="ok">[done]</span><span class="out">    312 tokens  0.8s</span>
+<span class="out">    └─ </span><span class="out" style="font-style:italic;">• LLMs use transformer architecture...</span>
+
+<span class="ok">Flow Succeeded in 3.1s — total: 2154 tokens</span>
+
+<span class="cmd">$</span> <span class="cursor"></span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
       <!-- Semantic health -->
       <section class="feature-highlight">
         <div class="container">
@@ -512,21 +588,21 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
         </div>
       </section>
 
+      <hr class="section-divider" />
+
       <!-- CTA -->
       <section class="cta-section">
         <div class="container">
           <h2>Ready to deploy your first agent?</h2>
           <p>
             Install the operator, apply your first ArkAgent, and start
-            routing tasks. No custom orchestration code required.
+            routing tasks — or run a flow locally right now with the
+            <code>ark</code> CLI. No custom orchestration code required.
           </p>
-          <a
-            href="https://arkonis.dev/docs/getting-started"
-            class="btn-primary"
-            target="_blank"
-            rel="noopener"
-            >Read the docs →</a
-          >
+          <div class="cta-buttons">
+            <a href="https://arkonis.dev/docs/getting-started" class="btn-primary" target="_blank" rel="noopener">Deploy to Kubernetes →</a>
+            <a href="https://arkonis.dev/docs/ark-cli" class="btn-ghost" target="_blank" rel="noopener">Try locally with ark →</a>
+          </div>
         </div>
       </section>
     </main>
@@ -536,22 +612,37 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span></code>
         <span>ARKONIS · Apache 2.0</span>
         <nav>
           <a href="https://arkonis.dev/docs/">Docs</a>
+          <a href="https://arkonis.dev/docs/ark-cli">CLI</a>
           <a href="https://arkonis.dev/docs/roadmap">Roadmap</a>
-          <a
-            href="https://github.com/arkonis-dev/ark-operator"
-            target="_blank"
-            rel="noopener"
-            >GitHub</a
-          >
-          <a
-            href="https://github.com/arkonis-dev/ark-operator/issues"
-            target="_blank"
-            rel="noopener"
-            >Issues</a
-          >
+          <a href="https://github.com/arkonis-dev/ark-operator" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/arkonis-dev/ark-operator/issues" target="_blank" rel="noopener">Issues</a>
         </nav>
       </div>
     </footer>
+
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+      document.querySelectorAll('.concept-item').forEach(function(item) {
+        item.addEventListener('toggle', function() {
+          if (item.open) {
+            document.querySelectorAll('.concept-item').forEach(function(other) {
+              if (other !== item) other.removeAttribute('open');
+            });
+          }
+        });
+      });
+
+      var terminalTitles = {
+        kubectl: 'kubectl — research-agent.yaml',
+        ark: 'ark run quickstart.yaml --provider mock --watch'
+      };
+      function switchTab(e, tab) {
+        document.querySelectorAll('.terminal-tab').forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.terminal-pane').forEach(function(p) { p.classList.remove('active'); });
+        e.currentTarget.classList.add('active');
+        document.getElementById('pane-' + tab).classList.add('active');
+        document.getElementById('terminal-title').textContent = terminalTitles[tab];
+      }
+    </script>
   </body>
 </html>

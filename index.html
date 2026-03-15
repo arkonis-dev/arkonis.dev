@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARKONIS: Kubernetes-native AI agent infrastructure</title>
+    <title>ARKONIS: Orchestrate AI agents on Kubernetes</title>
     <meta
       name="description"
-      content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload — or run locally with the ark CLI."
+      content="Orchestrate AI agents on Kubernetes — or run locally with the ark CLI. Deploy, scale, and manage agentic workloads the same way you manage any other workload."
     />
 
     <!-- Favicon -->
@@ -18,14 +18,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://arkonis.dev/" />
     <meta property="og:site_name" content="ARKONIS" />
-    <meta property="og:title" content="ARKONIS: Kubernetes-native AI agent infrastructure" />
-    <meta property="og:description" content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload. kubectl apply and you're done." />
+    <meta property="og:title" content="ARKONIS: Orchestrate AI agents on Kubernetes" />
+    <meta property="og:description" content="Orchestrate AI agents on Kubernetes — or run locally with the ark CLI. Deploy, scale, and manage agentic workloads the same way you manage any other workload." />
     <meta property="og:image" content="https://arkonis.dev/assets/logo.png" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ARKONIS: Kubernetes-native AI agent infrastructure" />
-    <meta name="twitter:description" content="Deploy, scale, and manage agentic workloads the same way you manage any other Kubernetes workload. kubectl apply and you're done." />
+    <meta name="twitter:title" content="ARKONIS: Orchestrate AI agents on Kubernetes" />
+    <meta name="twitter:description" content="Orchestrate AI agents on Kubernetes — or run locally with the ark CLI. Deploy, scale, and manage agentic workloads the same way you manage any other workload." />
     <meta name="twitter:image" content="https://arkonis.dev/assets/logo.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,6 +52,11 @@
           <a href="https://arkonis.dev/docs/">Docs</a>
           <a href="https://arkonis.dev/docs/ark-cli">CLI</a>
           <a href="https://arkonis.dev/docs/roadmap">Roadmap</a>
+          <a href="https://github.com/arkonis-dev/ark-operator" class="header-star" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+            Star
+            <span class="header-star-count" id="star-count"></span>
+          </a>
           <a href="https://github.com/arkonis-dev/ark-operator" class="btn-outline" target="_blank" rel="noopener">GitHub</a>
         </nav>
       </div>
@@ -62,10 +67,7 @@
       <section class="hero">
         <div class="container">
           <div class="badge"><span id="hero-version">v0.4.1</span> · Apache 2.0</div>
-          <h1>
-            Kubernetes-native AI agent infrastructure
-            <span class="hero-h1-sub">Operator for clusters · <code style="font-size:inherit;color:var(--green);background:var(--green-dim);padding:2px 8px;border-radius:4px;">ark</code> CLI for local runs</span>
-          </h1>
+          <h1>Orchestrate AI agents on Kubernetes</h1>
           <p class="hero-sub">
             Deploy, scale, and manage agentic workloads the same way you manage
             any other workload — or skip the cluster entirely and run flows
@@ -115,16 +117,8 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span>
           </div>
 
           <div class="hero-cta">
-            <a href="https://arkonis.dev/docs/getting-started" class="btn-primary" target="_blank" rel="noopener">Deploy to Kubernetes →</a>
-            <a href="https://arkonis.dev/docs/ark-cli" class="btn-ghost" target="_blank" rel="noopener">Try locally with ark →</a>
-          </div>
-          <div class="hero-star">
-            <a class="github-button"
-               href="https://github.com/arkonis-dev/ark-operator"
-               data-icon="octicon-star"
-               data-size="large"
-               data-show-count="true"
-               aria-label="Star arkonis-dev/ark-operator on GitHub">Star</a>
+            <a href="https://arkonis.dev/docs/getting-started" class="btn-primary btn-cta" target="_blank" rel="noopener">Deploy to Kubernetes →</a>
+            <a href="https://arkonis.dev/docs/ark-cli" class="btn-ghost btn-cta" target="_blank" rel="noopener">Try locally with ark →</a>
           </div>
         </div>
       </section>
@@ -188,65 +182,6 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span>
 
 <span class="watch-summary">Flow Succeeded in 3.1s — total: 2154 tokens</span></code></pre>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr class="section-divider" />
-
-      <!-- ARKONIS Acronym -->
-      <section class="acronym-section">
-        <div class="container">
-          <div class="acronym-inner">
-            <div class="acronym-title">What ARKONIS stands for</div>
-            <div class="acronym-row">
-              <span class="acronym-letter">A</span>
-              <span class="acronym-dot">—</span>
-              <span class="acronym-word">Agentic</span>
-              <span class="acronym-desc">LLM-powered agents as first-class resources</span>
-            </div>
-            <div class="acronym-divider"></div>
-            <div class="acronym-row">
-              <span class="acronym-letter">R</span>
-              <span class="acronym-dot">—</span>
-              <span class="acronym-word">Reconciler</span>
-              <span class="acronym-desc">Kubernetes control loop at the core</span>
-            </div>
-            <div class="acronym-divider"></div>
-            <div class="acronym-row">
-              <span class="acronym-letter">K</span>
-              <span class="acronym-dot">—</span>
-              <span class="acronym-word">Kubernetes</span>
-              <span class="acronym-desc">Runs anywhere k8s runs</span>
-            </div>
-            <div class="acronym-divider"></div>
-            <div class="acronym-row">
-              <span class="acronym-letter">O</span>
-              <span class="acronym-dot">—</span>
-              <span class="acronym-word">Operator</span>
-              <span class="acronym-desc">Extends the Kubernetes API</span>
-            </div>
-            <div class="acronym-divider"></div>
-            <div class="acronym-row">
-              <span class="acronym-letter">N</span>
-              <span class="acronym-dot">—</span>
-              <span class="acronym-word">Native</span>
-              <span class="acronym-desc">kubectl, RBAC, namespaces — no wrappers</span>
-            </div>
-            <div class="acronym-divider"></div>
-            <div class="acronym-row">
-              <span class="acronym-letter">I</span>
-              <span class="acronym-dot">—</span>
-              <span class="acronym-word">Inference</span>
-              <span class="acronym-desc">Model calls, tool use, MCP servers</span>
-            </div>
-            <div class="acronym-divider"></div>
-            <div class="acronym-row">
-              <span class="acronym-letter">S</span>
-              <span class="acronym-dot">—</span>
-              <span class="acronym-word">System</span>
-              <span class="acronym-desc">System prompts + semantic health checks</span>
             </div>
           </div>
         </div>
@@ -600,8 +535,8 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span>
             <code>ark</code> CLI. No custom orchestration code required.
           </p>
           <div class="cta-buttons">
-            <a href="https://arkonis.dev/docs/getting-started" class="btn-primary" target="_blank" rel="noopener">Deploy to Kubernetes →</a>
-            <a href="https://arkonis.dev/docs/ark-cli" class="btn-ghost" target="_blank" rel="noopener">Try locally with ark →</a>
+            <a href="https://arkonis.dev/docs/getting-started" class="btn-primary btn-cta" target="_blank" rel="noopener">Deploy to Kubernetes →</a>
+            <a href="https://arkonis.dev/docs/ark-cli" class="btn-ghost btn-cta" target="_blank" rel="noopener">Try locally with ark →</a>
           </div>
         </div>
       </section>
@@ -614,13 +549,13 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span>
           <a href="https://arkonis.dev/docs/">Docs</a>
           <a href="https://arkonis.dev/docs/ark-cli">CLI</a>
           <a href="https://arkonis.dev/docs/roadmap">Roadmap</a>
+          <a href="https://arkonis.dev/docs/faq">FAQ</a>
           <a href="https://github.com/arkonis-dev/ark-operator" target="_blank" rel="noopener">GitHub</a>
           <a href="https://github.com/arkonis-dev/ark-operator/issues" target="_blank" rel="noopener">Issues</a>
         </nav>
       </div>
     </footer>
 
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
       document.querySelectorAll('.concept-item').forEach(function(item) {
         item.addEventListener('toggle', function() {
@@ -654,6 +589,16 @@ research-agent    claude-sonnet-4-20250514   5          5       2m</span>
           var stat = document.getElementById('stat-version');
           if (hero) hero.textContent = v;
           if (stat) stat.textContent = v;
+        })
+        .catch(function() {});
+
+      fetch('https://api.github.com/repos/arkonis-dev/ark-operator')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var count = data.stargazers_count;
+          if (count === undefined) return;
+          var el = document.getElementById('star-count');
+          if (el) el.textContent = count >= 1000 ? (count / 1000).toFixed(1) + 'k' : count;
         })
         .catch(function() {});
     </script>

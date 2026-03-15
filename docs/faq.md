@@ -63,7 +63,7 @@ Yes. Add the Helm repo and install with one command:
 helm repo add arkonis https://charts.arkonis.dev
 helm install ark-operator arkonis/ark-operator \
   --namespace ark-system --create-namespace \
-  --set taskQueueURL=redis.agent-infra.svc.cluster.local:6379 \
+  --set taskQueueURL=redis.ark-system.svc.cluster.local:6379 \
   --set apiKeys.anthropicApiKey=sk-ant-...
 ```
 

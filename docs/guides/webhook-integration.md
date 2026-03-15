@@ -40,7 +40,7 @@ kubectl apply -f https://raw.githubusercontent.com/arkonis-dev/ark-operator/main
 
 Wait for it to be ready:
 ```bash
-kubectl rollout status statefulset/redis -n agent-infra
+kubectl rollout status statefulset/redis -n ark-system
 ```
 
 ---
@@ -54,7 +54,7 @@ helm repo update
 helm install ark-operator arkonis/ark-operator \
   --namespace ark-system \
   --create-namespace \
-  --set taskQueueURL=redis.agent-infra.svc.cluster.local:6379 \
+  --set taskQueueURL=redis.ark-system.svc.cluster.local:6379 \
   --set triggerWebhook.url=http://ark-operator.ark-system.svc.cluster.local:8092 \
   --set apiKeys.anthropicApiKey=sk-ant-...
 ```
@@ -221,5 +221,5 @@ The operator detects the ConfigMap change, restarts the agent pods, and the next
 ```bash
 helm uninstall ark-operator -n ark-system
 kubectl delete namespace ark-system
-kubectl delete namespace agent-infra
+kubectl delete namespace ark-system
 ```

@@ -59,7 +59,7 @@ helm repo update
 helm install ark-operator arkonis/ark-operator \
   --namespace ark-system \
   --create-namespace \
-  --set taskQueueURL=redis.agent-infra.svc.cluster.local:6379 \
+  --set taskQueueURL=redis.ark-system.svc.cluster.local:6379 \
   --set triggerWebhook.url=http://ark-operator.ark-system.svc.cluster.local:8092 \
   --set apiKeys.anthropicApiKey=sk-ant-...
 ```
@@ -70,7 +70,7 @@ To use an existing secret instead of passing the key directly:
 helm install ark-operator arkonis/ark-operator \
   --namespace ark-system \
   --create-namespace \
-  --set taskQueueURL=redis.agent-infra.svc.cluster.local:6379 \
+  --set taskQueueURL=redis.ark-system.svc.cluster.local:6379 \
   --set apiKeys.existingSecret=my-ark-secrets
 ```
 ```
@@ -101,7 +101,7 @@ Create one secret per namespace where agents will run. The operator injects the 
 ```bash
 kubectl create secret generic ark-operator-api-keys \
   --from-literal=ANTHROPIC_API_KEY=sk-ant-... \
-  --from-literal=TASK_QUEUE_URL=redis.agent-infra.svc.cluster.local:6379
+  --from-literal=TASK_QUEUE_URL=redis.ark-system.svc.cluster.local:6379
 ```
 
 `TASK_QUEUE_URL` is always required. To use a different provider, also add `AGENT_PROVIDER=<name>` to the secret.

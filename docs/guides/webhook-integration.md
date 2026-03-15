@@ -59,9 +59,36 @@ kubectl rollout status deployment/redis -n ark-system
 
 ---
 
-## 3. Define your agent and flow
+## 3. Store your prompt in a ConfigMap
 
-Create a file `my-flow.yaml`. This example takes a text input and returns structured JSON — replace the prompt and schema with whatever your app needs.
+For long prompts, keep them out of the YAML spec and in a ConfigMap instead. The operator reads it at reconcile time and restarts agent pods automatically when it changes.
+
+Create a file `prompt.txt` with your full system prompt:
+
+```
+You are a data extraction assistant. Your job is to read the provided
+text carefully and extract structured information from it.
+
+Return only a valid JSON object — no explanation, no markdown, no code
+fences. The JSON must match the schema the caller expects exactly.
+
+If a field cannot be determined from the text, set it to null.
+Never guess or invent values.
+```
+
+Create the ConfigMap:
+
+```bash
+kubectl create configmap extractor-prompt \
+  --from-file=system.txt=./prompt.txt \
+  --namespace ark-system
+```
+
+---
+
+## 4. Define your agent and flow
+
+Create a file `my-flow.yaml`. The agent references the prompt from the ConfigMap via `systemPromptRef`.
 
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
@@ -71,10 +98,10 @@ metadata:
   namespace: ark-system
 spec:
   model: claude-sonnet-4-20250514
-  systemPrompt: |
-    You are a data extraction assistant. Extract structured information
-    from the provided text and return it as valid JSON matching the
-    requested schema. Return only the JSON object, no explanation.
+  systemPromptRef:
+    configMapKeyRef:
+      name: extractor-prompt
+      key: system.txt
   limits:
     maxTokensPerCall: 4000
     timeoutSeconds: 30
@@ -115,7 +142,7 @@ kubectl get arkevent extract-trigger -n ark-system
 
 ---
 
-## 4. Expose the webhook to localhost
+## 5. Expose the webhook to localhost
 
 ```bash
 kubectl port-forward svc/ark-operator 8092:8092 -n ark-system
@@ -125,7 +152,7 @@ Leave this running in a terminal. Your app can now reach the webhook at `http://
 
 ---
 
-## 5. Call it from your app
+## 6. Call it from your app
 
 Replace your hardcoded LLM call with a POST to the webhook. Add `?mode=sync` so the request waits and returns the result directly — no polling needed.
 
@@ -161,15 +188,18 @@ The flow runs synchronously — the HTTP connection stays open until Claude resp
 
 ---
 
-## 6. Iterate on the prompt
+## 7. Iterate on the prompt
 
-No app restarts needed. Edit `my-flow.yaml` — change the system prompt, add a step, adjust the schema — and reapply:
+Edit `prompt.txt` and reapply the ConfigMap — no YAML changes needed:
 
 ```bash
-kubectl apply -f my-flow.yaml
+kubectl create configmap extractor-prompt \
+  --from-file=system.txt=./prompt.txt \
+  --namespace ark-system \
+  --dry-run=client -o yaml | kubectl apply -f -
 ```
 
-The next webhook call picks up the changes immediately.
+The operator detects the ConfigMap change, restarts the agent pods, and the next webhook call uses the updated prompt. No app restart required.
 
 ---
 

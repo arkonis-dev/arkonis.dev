@@ -91,6 +91,32 @@ ark run large-flow.yaml --provider auto --max-tokens 4000
 
 ---
 
+### `ark init`
+
+Scaffold a new project directory with a ready-to-run flow.
+
+```
+ark init <project-name>
+```
+
+Creates a new directory containing:
+
+| File | Description |
+|---|---|
+| `quickstart.yaml` | `ArkAgent` + `ArkFlow` definition, runnable immediately with `--provider mock` |
+| `.env.example` | Template for API keys — copy to `.env` and fill in |
+| `docker-compose.yml` | Local Redis for the task queue (needed when deploying to a cluster) |
+
+**Example**
+
+```bash
+ark init my-agent
+cd my-agent
+ark run quickstart.yaml --provider mock --watch
+```
+
+---
+
 ### `ark validate`
 
 Check a flow definition for errors without making any model calls.

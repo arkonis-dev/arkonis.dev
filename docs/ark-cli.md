@@ -38,11 +38,24 @@ https://github.com/arkonis-dev/ark-operator/releases/latest
 Download the binary for your platform, make it executable, and place it on your `$PATH`:
 
 ```bash
-# macOS example
-curl -L https://github.com/arkonis-dev/ark-operator/releases/latest/download/ark_darwin_amd64 \
-  -o /usr/local/bin/ark
-chmod +x /usr/local/bin/ark
+# macOS (Apple Silicon)
+curl -L https://github.com/arkonis-dev/ark-operator/releases/latest/download/ark-darwin-arm64 \
+  -o ark && chmod +x ark && sudo mv ark /usr/local/bin/ark
+
+# macOS (Intel)
+curl -L https://github.com/arkonis-dev/ark-operator/releases/latest/download/ark-darwin-amd64 \
+  -o ark && chmod +x ark && sudo mv ark /usr/local/bin/ark
+
+# Linux (amd64)
+curl -L https://github.com/arkonis-dev/ark-operator/releases/latest/download/ark-linux-amd64 \
+  -o ark && chmod +x ark && sudo mv ark /usr/local/bin/ark
+
+# Linux (arm64)
+curl -L https://github.com/arkonis-dev/ark-operator/releases/latest/download/ark-linux-arm64 \
+  -o ark && chmod +x ark && sudo mv ark /usr/local/bin/ark
 ```
+
+**Windows** — download `ark-windows-amd64.exe` from the [releases page](https://github.com/arkonis-dev/ark-operator/releases/latest), rename it to `ark.exe`, and add it to your `PATH`.
 
 ---
 

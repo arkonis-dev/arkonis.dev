@@ -30,7 +30,22 @@ kubectl get nodes
 
 ---
 
-## 1. Install the operator
+## 1. Deploy Redis
+
+ark-operator uses Redis Streams as the task queue between the operator and agent pods.
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/arkonis-dev/ark-operator/main/config/prereqs/redis.yaml
+```
+
+Wait for it to be ready:
+```bash
+kubectl rollout status statefulset/redis -n agent-infra
+```
+
+---
+
+## 2. Install the operator
 
 ```bash
 helm repo add arkonis https://charts.arkonis.dev
@@ -44,17 +59,9 @@ helm install ark-operator arkonis/ark-operator \
   --set apiKeys.anthropicApiKey=sk-ant-...
 ```
 
----
-
-## 2. Deploy Redis
-
+Wait for the operator to be ready:
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/arkonis-dev/ark-operator/main/config/prereqs/redis.yaml
-```
-
-Wait for it to be ready:
-```bash
-kubectl rollout status deployment/redis -n ark-system
+kubectl rollout status deployment/ark-operator -n ark-system
 ```
 
 ---
@@ -125,9 +132,10 @@ metadata:
   name: extract-trigger
   namespace: ark-system
 spec:
-  type: webhook
-  flows:
-    - name: extract-flow
+  source:
+    type: webhook
+  targets:
+    - pipeline: extract-flow
 ```
 
 Apply it:
@@ -178,8 +186,8 @@ const response = await fetch(
 )
 
 const result = await response.json()
-// result.status  → "succeeded" or "failed"
-// result.output  → the agent's response string
+// result.status    → "succeeded" or "failed"
+// result.output    → the agent's response string
 // result.durationMs → how long it took
 console.log(result.output)
 ```
@@ -208,4 +216,5 @@ The operator detects the ConfigMap change, restarts the agent pods, and the next
 ```bash
 helm uninstall ark-operator -n ark-system
 kubectl delete namespace ark-system
+kubectl delete namespace agent-infra
 ```

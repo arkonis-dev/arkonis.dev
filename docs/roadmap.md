@@ -52,8 +52,10 @@ First-class Google Gemini support alongside Anthropic and OpenAI. `ArkService` m
 
 Cost controls beyond per-run budgets: per-namespace quotas, pre-limit alerts, cost attribution by team label, and monthly spend rollups in `.status`.
 
-### v0.9 — Developer Experience
-`ark init <project>` scaffolds a new project with YAML definitions, docker-compose, `.env.example`, and ready-to-run example agents. OperatorHub listing for platform team discoverability. KEDA autoscaling on queue depth.
+### v0.9 — Developer Experience & Storage
+OperatorHub listing for platform team discoverability. KEDA autoscaling on queue depth.
+
+File artifact support — flow steps can produce and consume files, not just strings. Backends: local disk (`ark run`), S3, and GCS. A step can declare `outputType: file` and downstream steps receive a signed URL or local path. Enables agent-generated reports, images, and datasets to flow through pipelines without manual piping.
 
 ### v1.0 — Production Ready
 Multi-tenancy hardening with per-namespace RBAC. CNCF sandbox application.

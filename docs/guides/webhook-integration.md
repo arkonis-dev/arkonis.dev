@@ -81,6 +81,7 @@ fences. The JSON must match the schema the caller expects exactly.
 
 If a field cannot be determined from the text, set it to null.
 Never guess or invent values.
+Do not use any tools. Respond directly with the JSON object.
 ```
 
 Create the ConfigMap:
@@ -97,6 +98,7 @@ kubectl create configmap extractor-prompt \
 
 Create a file `my-flow.yaml`. The agent references the prompt from the ConfigMap via `systemPromptRef`.
 
+{% raw %}
 ```yaml
 apiVersion: arkonis.dev/v1alpha1
 kind: ArkAgent
@@ -136,7 +138,10 @@ spec:
     type: webhook
   targets:
     - pipeline: extract-flow
+      input:
+        text: "{{ .trigger.body.text }}"
 ```
+{% endraw %}
 
 Apply it:
 ```bash

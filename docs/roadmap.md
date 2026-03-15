@@ -17,13 +17,13 @@ Deploy AI agents as Kubernetes resources. Define a model, a system prompt, and a
 Declarative multi-step workflows with `ArkFlow`. Agents chain outputs to inputs via template expressions. Any MCP-compatible tool server connects without code changes.
 
 ### v0.3 — Memory & Structured Outputs
-`ArkMemory` for persistent cross-task context (in-process, Redis, vector-store). Typed artifact passing between pipeline steps. Dead-letter queue with retry and backoff.
+`ArkMemory` for persistent cross-task context (in-process, Redis, vector-store). Typed artifact passing between pipeline steps with JSON schema validation. Dead-letter queue with retry and backoff.
 
 ### v0.4 — Orchestration, Events & Cost Controls
 Conditional steps (`if:`), loop steps, flow-level timeouts, supervisor/worker sub-tasks, inline HTTP tool definitions. `ArkEvent` triggers: cron, webhook, and pipeline-output with fan-out. Per-run and daily token budgets with automatic replica scaling.
 
 ### v0.5 — Local Development CLI
-`ark run` and `ark validate` — execute and validate `ArkFlow` definitions locally without a cluster. Multi-provider support: Anthropic, OpenAI, and mock. Auto-detection of provider from model name. Pre-built binaries in every GitHub release.
+`ark run` and `ark validate` — execute and validate `ArkFlow` definitions locally without a cluster. Multi-provider support: Anthropic, OpenAI, and mock. Auto-detection of provider from model name (`claude-*` → Anthropic, `gpt-*/o*` → OpenAI). Mixed-model flows work today — each step references its own `ArkAgent` with any model. `--output json` for CI pipelines. Pre-built binaries in every GitHub release.
 
 ---
 
@@ -36,11 +36,22 @@ Conditional steps (`if:`), loop steps, flow-level timeouts, supervisor/worker su
 
 ## Planned
 
-### v0.7 — Multi-Model & Secrets
-First-class support for OpenAI (`gpt-4o`, `o3`) and Google Gemini alongside Anthropic. `ArkService` model routing by cost, latency, or capability. `ArkSecret` for centralized API key management with rotation without pod restarts. Optional [LiteLLM](https://github.com/BerriAI/litellm) proxy for cross-provider failover and unified rate limiting.
+### v0.7 — Observability ⚠️
+The biggest gap for production adoption. Without this, platform teams cannot safely operate the system at scale.
 
-### v0.8 — Observability
-Distributed tracing via OpenTelemetry — spans for queue wait, LLM calls, and individual tool invocations. Prometheus metrics for throughput, token usage, error rates, and latency. `kubectl ark trace <task-id>` for per-task drill-down.
+- Prometheus metrics: throughput, queue depth, token usage, latency histograms
+- Distributed tracing via OpenTelemetry — spans for queue wait, LLM calls, and tool invocations
+- Per-agent and per-namespace token spend dashboard
+- Structured audit log — every agent action emitted as a Kubernetes Event
+- `kubectl ark trace <task-id>` for per-task drill-down
+
+### v0.8 — Multi-Model & Advanced Cost Controls
+First-class Google Gemini support alongside Anthropic and OpenAI. `ArkService` model routing by cost, latency, or capability. Optional [LiteLLM](https://github.com/BerriAI/litellm) proxy for cross-provider failover and unified rate limiting.
+
+Cost controls beyond per-run budgets: per-namespace quotas, pre-limit alerts, cost attribution by team label, and monthly spend rollups in `.status`.
+
+### v0.9 — Developer Experience
+`ark init <project>` scaffolds a new project with YAML definitions, docker-compose, `.env.example`, and ready-to-run example agents. Helm chart for single-command install with configurable namespaces, resource limits, and image pull secrets. OperatorHub listing for platform team discoverability. KEDA autoscaling on queue depth.
 
 ### v1.0 — Production Ready
-KEDA autoscaling on queue depth. Helm chart for single-command install. Multi-tenancy hardening with per-namespace cost quotas. CNCF sandbox application.
+Multi-tenancy hardening with per-namespace RBAC. CNCF sandbox application.

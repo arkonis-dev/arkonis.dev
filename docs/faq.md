@@ -27,7 +27,7 @@ ark run quickstart.yaml --provider mock --watch
 
 ## Which LLM providers are supported?
 
-Anthropic (`claude-*` models) and OpenAI (`gpt-*`, `o1-*`, `o3-*` models) are supported today. Google Gemini is planned for v0.8. The provider is auto-detected from the model name, or you can set it explicitly with `--provider`.
+Anthropic (`claude-*` models) and OpenAI (`gpt-*`, `o1-*`, `o3-*` models) are supported. Any OpenAI-compatible endpoint also works — set `OPENAI_BASE_URL` to point at Ollama, vLLM, LM Studio, or any other local server, and use the model name as-is (e.g. `qwen2.5:1.5b`, `llama3.2`). The provider is auto-detected from the model name; unknown models default to the OpenAI provider. Google Gemini is planned for v0.8.
 
 ---
 

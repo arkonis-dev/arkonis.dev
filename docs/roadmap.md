@@ -22,8 +22,10 @@ Declarative multi-step workflows with `ArkFlow`. Agents chain outputs to inputs 
 ### v0.4 — Orchestration, Events & Cost Controls
 Conditional steps (`if:`), loop steps, flow-level timeouts, supervisor/worker sub-tasks, inline HTTP tool definitions. `ArkEvent` triggers: cron, webhook, and pipeline-output with fan-out. Per-run and daily token budgets with automatic replica scaling.
 
-### v0.5 — Local Development CLI
+### v0.5 — Local Development CLI & Helm
 `ark run` and `ark validate` — execute and validate `ArkFlow` definitions locally without a cluster. Multi-provider support: Anthropic, OpenAI, and mock. Auto-detection of provider from model name (`claude-*` → Anthropic, `gpt-*/o*` → OpenAI). Mixed-model flows work today — each step references its own `ArkAgent` with any model. `--output json` for CI pipelines. Pre-built binaries in every GitHub release.
+
+Helm chart for single-command cluster install: `helm install ark-operator arkonis/ark-operator`. Supports configurable namespaces, resource limits, image pull secrets, and API key injection from existing secrets.
 
 ---
 
@@ -51,7 +53,7 @@ First-class Google Gemini support alongside Anthropic and OpenAI. `ArkService` m
 Cost controls beyond per-run budgets: per-namespace quotas, pre-limit alerts, cost attribution by team label, and monthly spend rollups in `.status`.
 
 ### v0.9 — Developer Experience
-`ark init <project>` scaffolds a new project with YAML definitions, docker-compose, `.env.example`, and ready-to-run example agents. Helm chart for single-command install with configurable namespaces, resource limits, and image pull secrets. OperatorHub listing for platform team discoverability. KEDA autoscaling on queue depth.
+`ark init <project>` scaffolds a new project with YAML definitions, docker-compose, `.env.example`, and ready-to-run example agents. OperatorHub listing for platform team discoverability. KEDA autoscaling on queue depth.
 
 ### v1.0 — Production Ready
 Multi-tenancy hardening with per-namespace RBAC. CNCF sandbox application.

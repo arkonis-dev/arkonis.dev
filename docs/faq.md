@@ -57,7 +57,17 @@ Redis Streams with consumer groups. Redis is the only external dependency. A fut
 
 ## Is there a Helm chart?
 
-Not yet — planned for v0.9. Currently you install via `kubectl apply -f install.yaml`. Follow the [roadmap](./roadmap) for updates.
+Yes. Add the Helm repo and install with one command:
+
+```bash
+helm repo add arkonis https://charts.arkonis.dev
+helm install ark-operator arkonis/ark-operator \
+  --namespace ark-system --create-namespace \
+  --set taskQueueURL=redis.ark-system.svc.cluster.local:6379 \
+  --set apiKeys.anthropicApiKey=sk-ant-...
+```
+
+See the [Getting Started](../getting-started) guide for the full install options.
 
 ---
 

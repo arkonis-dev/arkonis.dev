@@ -50,7 +50,34 @@ make dev-down
 - `kubectl` configured against your cluster
 - An API key for your chosen LLM provider (Anthropic by default)
 
-### 1. Install the operator
+### Option A — Helm (recommended)
+
+```bash
+helm repo add arkonis https://charts.arkonis.dev
+helm repo update
+
+helm install ark-operator arkonis/ark-operator \
+  --namespace ark-system \
+  --create-namespace \
+  --set taskQueueURL=redis.ark-system.svc.cluster.local:6379 \
+  --set triggerWebhook.url=http://ark-operator.ark-system.svc.cluster.local:8092 \
+  --set apiKeys.anthropicApiKey=sk-ant-...
+```
+
+To use an existing secret instead of passing the key directly:
+
+```bash
+helm install ark-operator arkonis/ark-operator \
+  --namespace ark-system \
+  --create-namespace \
+  --set taskQueueURL=redis.ark-system.svc.cluster.local:6379 \
+  --set apiKeys.existingSecret=my-ark-secrets
+```
+```
+
+Full list of configurable values: `helm show values arkonis/ark-operator`
+
+### Option B — kubectl apply
 
 ```bash
 kubectl apply -f https://github.com/arkonis-dev/ark-operator/releases/latest/download/install.yaml

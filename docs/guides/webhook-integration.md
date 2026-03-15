@@ -39,7 +39,7 @@ helm repo update
 helm install ark-operator arkonis/ark-operator \
   --namespace ark-system \
   --create-namespace \
-  --set taskQueueURL=redis.ark-system.svc.cluster.local:6379 \
+  --set taskQueueURL=redis.agent-infra.svc.cluster.local:6379 \
   --set triggerWebhook.url=http://ark-operator.ark-system.svc.cluster.local:8092 \
   --set apiKeys.anthropicApiKey=sk-ant-...
 ```
